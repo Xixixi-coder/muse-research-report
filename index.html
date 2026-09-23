@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Muse 产品研究：从个人上下文、持续任务和可信执行，到支付机制、商业模式与京东支付启示。研究截止 2026 年 9 月 23 日。">
+  <meta name="theme-color" content="#002fa7">
+  <meta property="og:title" content="Muse｜产品调研与京东支付启示">
+  <meta property="og:description" content="产品解构、可信执行、支付机制、风险边界，以及七项京东支付行动启示。研究截止 2026年9月23日。">
+  <meta property="og:type" content="article">
+  <title>Muse｜产品调研与京东支付启示</title>
+  <style>
+    :root{--blue:#002fa7;--ink:#17191e;--muted:#656973;--line:#dddfe4;--paper:#f7f7f8;--white:#fff;--header:66px;--rail:214px;--font:"Helvetica Neue",Helvetica,"PingFang SC","Microsoft YaHei",sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:94px}body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}body.modal-open{overflow:hidden}button,input,a{-webkit-tap-highlight-color:transparent}button,input{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default}a{color:inherit;text-decoration:none}button{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:5px}::selection{background:var(--blue);color:white}p,h1,h2,h3,h4{margin:0}button{border:0;background:none}svg{display:block}button svg,a svg{flex-shrink:0}em{font-style:normal}small{font-size:12px}.skip{position:fixed;left:16px;top:-80px;padding:10px 20px;background:var(--blue);color:white;z-index:200}.skip:focus{top:10px}.topbar{height:var(--header);position:fixed;top:0;left:0;right:0;border-bottom:1px solid var(--line);background:#fff;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 34px;gap:20px}.brand{display:flex;align-items:center;gap:13px;font-size:14px;font-weight:600;white-space:nowrap}.brand-mark{width:25px;height:25px;background:var(--blue);display:grid;align-items:center;padding:5px}.brand-mark span{display:block;border:1px solid white;height:15px;transform:skewY(-16deg)}.brand-divider{height:16px;width:1px;background:var(--line);margin:0 4px}.brand-sub{color:var(--muted);font-size:12px;font-weight:400}.top-actions{display:flex;align-items:center;gap:25px;font-size:12px}.top-actions button{display:flex;gap:7px;align-items:center;padding:10px 0}.top-date{color:var(--muted)}.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--blue);width:0;transition:width .1s linear}.mobile-menu{display:none!important}.sidebar{position:fixed;left:0;top:var(--header);bottom:0;width:var(--rail);padding:40px 24px 24px 32px;border-right:1px solid var(--line);display:flex;flex-direction:column;background:white;z-index:25;overflow:auto}.rail-eyebrow{font-size:10px;color:var(--muted);letter-spacing:.09em;margin-bottom:20px}.sidebar nav{display:flex;flex-direction:column;gap:5px}.nav-link{display:flex;align-items:center;gap:14px;padding:10px 0;font-size:13px;color:var(--muted);position:relative;transition:color .15s}.nav-link span{font-size:11px;font-variant-numeric:tabular-nums;color:#858995}.nav-link:hover,.nav-link.active{color:var(--blue)}.nav-link.active{font-weight:600}.nav-link.active:before{content:"";position:absolute;left:-32px;top:8px;bottom:8px;width:3px;background:var(--blue)}.nav-link.active span{color:var(--blue)}.rail-footer{margin-top:auto;padding-top:40px}.rail-mark{font-size:44px;font-weight:600;letter-spacing:-3px;line-height:1}.rail-note{font-size:11px;color:var(--muted);line-height:1.8;margin-top:13px}.rail-link{margin-top:22px;display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--blue)}.page{margin-left:var(--rail);padding-top:var(--header)}main{max-width:1420px;margin:auto;padding:0 48px}.hero{padding:42px 0 0}.eyebrow{display:flex;gap:12px;align-items:center;font-size:11px;letter-spacing:.06em;color:var(--muted)}.eyebrow:before{content:"";width:7px;height:7px;background:var(--blue)}.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(310px,1fr);gap:42px;align-items:center;margin-top:30px}.hero-word{font-size:clamp(100px,11.4vw,172px);line-height:.94;font-weight:500;letter-spacing:-.075em;color:var(--blue);margin-left:-7px}.hero h1{font-size:clamp(27px,2.45vw,38px);letter-spacing:-.04em;line-height:1.5;font-weight:500;margin-top:24px}.hero-description{max-width:530px;font-size:14px;color:var(--muted);margin-top:20px;line-height:1.95}.hero-actions{display:flex;gap:12px;margin-top:25px;flex-wrap:wrap}.button{display:inline-flex;justify-content:space-between;align-items:center;gap:22px;border:1px solid var(--line);padding:11px 19px;font-size:12px;min-height:44px;background:white;transition:background .15s,color .15s}.button.primary{background:var(--blue);border-color:var(--blue);color:white}.button:hover{background:var(--paper)}.button.primary:hover{background:#002585}.hero-art{background:var(--blue);color:white;padding:27px 27px 19px;min-height:360px;position:relative;overflow:hidden}.art-heading{display:flex;justify-content:space-between;gap:10px;font-size:10px;letter-spacing:.08em;color:#d5e0ff}.art-heading span:last-child{letter-spacing:0}.hero-art svg{width:100%;height:auto;margin-top:16px}.art-caption{border-top:1px solid #6884ca;padding-top:13px;margin-top:5px;font-size:11px;color:#e0e8ff;display:flex;justify-content:space-between;gap:15px}.hero-meta{margin-top:36px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 1.55fr}.meta-item{padding:20px 22px;border-right:1px solid var(--line);display:flex;align-items:center;gap:12px}.meta-item:first-child{padding-left:0}.meta-number{font-size:35px;font-weight:400;line-height:1;letter-spacing:-1.5px;color:var(--blue)}.meta-item span:last-child{font-size:11px;color:var(--muted)}.meta-method{padding:16px 0 16px 24px;display:flex;flex-direction:column;justify-content:center;font-size:11px;line-height:1.8;color:var(--muted)}.meta-method strong{font-weight:500;color:var(--ink)}.section{padding:68px 0;border-bottom:1px solid var(--line);scroll-margin-top:10px}.section-heading{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:30px}.section-title{display:flex;gap:19px;align-items:baseline}.section-num{font-size:13px;color:var(--blue);font-variant-numeric:tabular-nums}.section h2{font-size:29px;font-weight:500;line-height:1.35;letter-spacing:-.04em}.section-sub{margin:10px 0 0 37px;font-size:13px;color:var(--muted);max-width:660px}.section-label{font-size:10px;color:var(--muted);white-space:nowrap;padding-top:8px;letter-spacing:.07em}.thesis{font-size:clamp(20px,2vw,27px);line-height:1.75;letter-spacing:-.025em;max-width:930px;margin:0 0 25px 37px}.thesis em{color:var(--blue)}.filter-bar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:22px}.filter-button{padding:7px 13px;font-size:12px;border:1px solid transparent;min-height:37px;color:var(--muted)}.filter-button[aria-pressed=true]{border-color:var(--blue);background:var(--blue);color:white}.filter-button:hover:not([aria-pressed=true]){background:var(--paper)}.filter-count{margin-left:auto;font-size:11px;color:var(--muted)}.findings{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}.finding{padding:23px 26px 24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:30px 1fr;gap:12px}.finding:nth-of-type(even){padding-left:26px;border-left:1px solid var(--line)}.finding[hidden]{display:none}.finding-number{font-size:13px;color:#8b8e97;font-variant-numeric:tabular-nums;padding-top:4px}.finding h3{font-size:17px;font-weight:500;letter-spacing:-.02em;margin:8px 0}.finding p{font-size:13px;color:var(--muted);line-height:1.9}.tag{display:inline-block;font-size:10px;border:1px solid var(--line);padding:1px 6px;line-height:1.7;letter-spacing:.02em;white-space:nowrap;color:var(--muted)}.tag.fact{color:var(--blue);border-color:#bccbef}.tag.media{border-style:dashed}.tag.pending{background:var(--paper)}.citation{font-size:10px;color:var(--blue);white-space:nowrap;margin-left:4px;vertical-align:1px}.citation:hover{text-decoration:underline}.reading-note{font-size:11px;color:var(--muted);margin-top:17px;line-height:1.85}.tabs{display:flex;gap:28px;border-bottom:1px solid var(--line)}.tab{font-size:13px;color:var(--muted);padding:12px 0;border-bottom:2px solid transparent;min-height:45px}.tab[aria-selected=true]{color:var(--blue);border-bottom-color:var(--blue);font-weight:500}.capability-panel{display:grid;grid-template-columns:minmax(210px,.85fr) 1.5fr;gap:36px;padding:30px 0}.capability-panel[hidden]{display:none}.panel-lead h3{font-size:24px;font-weight:400;letter-spacing:-.035em;line-height:1.55}.panel-lead p{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.9}.feature-row{padding:15px 0;border-bottom:1px solid var(--line)}.feature-row:first-child{padding-top:0}.feature-row h4{font-size:14px;font-weight:500}.feature-row p{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.85}.journey{background:var(--paper);padding:22px 25px}.micro-label{font-size:11px;letter-spacing:.02em;color:var(--muted);margin-bottom:17px}.journey-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.journey-step{border-top:1px solid #c8cbd2;padding-top:10px}.journey-step b{font-size:10px;color:var(--blue);font-weight:400}.journey-step h4{font-size:13px;font-weight:500;margin-top:5px}.journey-step p{font-size:10px;color:var(--muted);margin-top:3px;line-height:1.75}.architecture{display:grid;grid-template-columns:1fr 52px 1fr;border:1px solid var(--line);margin-bottom:27px}.arch-zone{padding:24px}.arch-zone.trusted{background:var(--blue);color:white}.zone-label{font-size:10px;letter-spacing:.03em;color:var(--muted);margin-bottom:20px}.trusted .zone-label{color:#cfdbff}.arch-zone h3{font-size:21px;font-weight:400;margin-bottom:9px}.arch-zone p{font-size:12px;color:var(--muted);line-height:1.9}.trusted p{color:#d8e2ff}.zone-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.zone-chips span{border:1px solid var(--line);padding:4px 8px;font-size:10px}.trusted .zone-chips span{border-color:#6e89d0}.arch-boundary{display:flex;align-items:center;justify-content:center;color:var(--blue)}.guardrail{border-left:3px solid var(--blue);padding:10px 18px;background:var(--paper);display:flex;gap:18px;align-items:baseline;margin-bottom:29px}.guardrail strong{font-size:15px;font-weight:500;flex-shrink:0}.guardrail p{font-size:12px;color:var(--muted)}.subheading{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin:31px 0 16px}.subheading h3{font-size:19px;font-weight:500;letter-spacing:-.02em}.subheading span{font-size:11px;color:var(--muted)}.payment-switch{display:flex;gap:0;border-bottom:1px solid var(--line)}.payment-switch .tab{padding:12px 22px}.payment-switch .tab[aria-selected=true]{background:var(--paper)}.payment-panel{padding:24px 25px;border:1px solid var(--line);border-top:0}.payment-panel[hidden]{display:none}.payment-steps{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;align-items:center;gap:13px}.payment-step b{font-size:10px;color:var(--muted);font-weight:400}.payment-step h4{font-size:14px;font-weight:500;margin-top:5px}.payment-step p{font-size:11px;color:var(--muted);line-height:1.8;margin-top:5px}.payment-step.confirm h4{color:var(--blue)}.payment-arrow{color:var(--blue)}.payment-boundary{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.payment-boundary strong{color:var(--ink);font-weight:500}.price-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}.price{padding:23px 25px;border-right:1px solid var(--line)}.price:last-child{border-right:0}.price-name{font-size:12px}.price-value{font-size:44px;line-height:1.2;font-weight:400;letter-spacing:-2px;margin:14px 0;color:var(--blue)}.price-value span{font-size:12px;color:var(--muted);letter-spacing:0;margin-left:6px}.price-quota{font-size:14px}.price-detail{font-size:11px;color:var(--muted);margin-top:5px}.commercial-note{margin-top:24px;padding:20px 23px;background:var(--paper);display:grid;grid-template-columns:140px 1fr;gap:20px}.commercial-note h4{font-size:14px;font-weight:500;margin-top:7px}.commercial-note p{font-size:12px;color:var(--muted);line-height:1.9}.comparison{width:100%;border-collapse:collapse;margin-top:10px;table-layout:fixed;font-size:12px}.comparison th,.comparison td{padding:15px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.comparison th{font-size:10px;color:var(--muted);font-weight:400;background:var(--paper)}.comparison th:first-child{width:20%}.comparison td:first-child{font-weight:500}.comparison td:not(:first-child){color:var(--muted)}.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}.risk{border-top:1px solid var(--line)}details summary{cursor:pointer;list-style:none}details summary::-webkit-details-marker{display:none}.risk summary{position:relative;padding:19px 28px 19px 0;font-size:14px;font-weight:500}.risk summary:after,.implication summary:after{content:"+";position:absolute;right:0;top:16px;font-size:23px;color:var(--blue);font-weight:300}.risk[open] summary:after,.implication[open] summary:after{content:"−"}.risk-body{font-size:12px;color:var(--muted);padding:0 0 22px;line-height:1.95}.risk-body strong{color:var(--ink);font-weight:500}.unknowns{margin-top:25px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.unknowns strong{font-weight:500;color:var(--ink)}.jd-banner{background:var(--blue);color:white;padding:32px 35px;margin-bottom:28px}.jd-banner .micro-label{color:#cbd9ff;margin-bottom:11px}.jd-banner h3{font-size:clamp(22px,2.2vw,31px);font-weight:400;line-height:1.65;letter-spacing:-.035em;max-width:860px}.jd-banner p{font-size:12px;color:#d5e0ff;margin-top:12px;max-width:850px;line-height:1.9}.proposed-flow{display:flex;gap:15px;align-items:center;margin-top:23px;flex-wrap:wrap;font-size:12px;border-top:1px solid #597bc9;padding-top:18px}.proposed-flow svg{width:16px;height:16px;color:#a9c0fc}.implication{border-top:1px solid var(--line)}.implication:last-of-type{border-bottom:1px solid var(--line)}.implication summary{display:grid;grid-template-columns:45px 1fr;position:relative;gap:15px;padding:21px 40px 21px 0}.implication summary:after{top:21px}.implication-number{font-size:24px;line-height:1.4;color:var(--blue);font-weight:400;letter-spacing:-1px}.implication h3{font-size:17px;font-weight:500;letter-spacing:-.02em}.implication-summary{font-size:12px;color:var(--muted);margin-top:5px}.implication-body{padding:0 40px 25px 60px;display:grid;grid-template-columns:1fr 1fr;gap:30px}.implication-body p{font-size:12px;color:var(--muted);line-height:1.9}.implication-body h4{font-size:10px;color:var(--blue);font-weight:500;margin-bottom:7px}.roadmap{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}.phase{padding:23px 21px;border-right:1px solid var(--line)}.phase:last-child{border:0}.phase-label{font-size:11px;color:var(--blue)}.phase h3{font-size:18px;font-weight:500;margin-top:14px}.phase p{font-size:12px;line-height:1.9;color:var(--muted);margin-top:10px}.phase-evidence{padding-top:15px;border-top:1px solid var(--line);margin-top:20px;font-size:10px;color:var(--muted)}.phase-evidence strong{display:block;font-size:11px;font-weight:500;color:var(--ink);margin-top:5px}.experiment-list{margin-top:26px}.experiment{display:grid;grid-template-columns:150px 1fr 1fr;gap:20px;border-top:1px solid var(--line);padding:15px 0;font-size:12px}.experiment h4{font-weight:500;font-size:13px}.experiment p{color:var(--muted)}.experiment .stop{padding-left:18px;border-left:1px solid var(--line)}.metrics{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.metrics span{font-size:10px;border:1px solid var(--line);padding:5px 9px}.source-tools{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}.source-tools .filter-bar{margin-bottom:0;gap:2px}.search-box{border:1px solid var(--line);display:flex;align-items:center;gap:9px;padding:8px 12px;width:245px}.search-box svg{color:var(--muted)}.search-box input{border:0;outline:0;background:none;min-width:0;width:100%;font-size:12px}.search-box:focus-within{outline:2px solid var(--blue);outline-offset:2px}.source-status{font-size:11px;color:var(--muted);margin:17px 0}.source-list{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}.source-item{padding:16px 0;border-top:1px solid var(--line);scroll-margin-top:90px}.source-item[hidden]{display:none}.source-title{display:flex;gap:9px;align-items:baseline;justify-content:space-between}.source-title a{font-size:13px;font-weight:500;display:flex;gap:9px;align-items:baseline}.source-title a:hover{color:var(--blue)}.source-id{color:var(--blue);font-size:10px;flex-shrink:0;font-weight:400}.source-item p{font-size:11px;color:var(--muted);margin:5px 0 0 32px;line-height:1.9}.source-meta{display:flex;gap:9px;align-items:center;margin:7px 0 0 32px;color:var(--muted);font-size:10px;flex-wrap:wrap}.source-item:target{background:var(--paper);outline:2px solid var(--blue);outline-offset:6px}.source-more{display:block;width:100%;text-align:left;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;font-size:12px;color:var(--blue);margin-top:8px}.source-more[hidden]{display:none}.empty-state{font-size:13px;padding:30px 0;color:var(--muted)}.local-materials{margin-top:30px;padding:22px;background:var(--paper)}.local-materials h3{font-size:13px;font-weight:500}.local-materials p{font-size:11px;color:var(--muted);margin-top:8px}.local-files{display:flex;gap:12px 22px;flex-wrap:wrap;margin-top:13px}.local-files span{font-size:11px}.local-files a{font-size:11px;text-decoration:underline;text-underline-offset:4px}.report-callout{display:flex;justify-content:space-between;gap:30px;align-items:center;padding-top:32px;margin-top:32px;border-top:1px solid var(--line)}.report-callout h3{font-size:24px;font-weight:400;letter-spacing:-.035em}.report-callout p{font-size:12px;color:var(--muted);margin-top:7px}.report-buttons{display:flex;gap:9px;flex-wrap:wrap}.footer{padding:28px 0 34px;display:flex;justify-content:space-between;gap:24px;align-items:flex-end;font-size:10px;color:var(--muted)}.footer strong{font-size:14px;font-weight:500;color:var(--ink);display:block;margin-bottom:6px}.footer a{color:var(--blue)}.to-top{position:fixed;bottom:23px;right:23px;z-index:20;width:41px;height:41px;border:1px solid var(--line);background:white;display:flex;align-items:center;justify-content:center;color:var(--blue);opacity:0;pointer-events:none;transition:opacity .2s}.to-top.visible{opacity:1;pointer-events:auto}.report-dialog{padding:0;border:1px solid var(--line);width:min(1060px,94vw);height:min(92vh,1100px);max-height:92vh;background:white;color:var(--ink);overflow:hidden}.report-dialog::backdrop{background:#17191e88;backdrop-filter:blur(3px)}.dialog-shell{display:flex;flex-direction:column;height:100%}.dialog-header{padding:16px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:15px;background:var(--paper);flex-shrink:0}.dialog-header h2{font-size:14px;font-weight:500}.dialog-header p{font-size:10px;color:var(--muted);margin-top:2px}.dialog-close{padding:8px;min-width:40px;min-height:40px;display:flex;align-items:center;justify-content:center}.report-content{overflow:auto;padding:36px 45px 55px;overscroll-behavior:contain;font-size:14px;line-height:1.95}.report-content h1{font-size:29px;font-weight:500;letter-spacing:-.04em;line-height:1.6;margin-bottom:25px}.report-content h2{font-size:24px;line-height:1.5;margin:38px 0 20px;padding-top:20px;border-top:1px solid var(--line);font-weight:500}.report-content h3{font-size:18px;font-weight:500;margin:26px 0 12px}.report-content p{margin:13px 0}.report-content ul,.report-content ol{padding-left:23px}.report-content li{margin:9px 0}.report-content strong{font-weight:600}.report-content a{color:var(--blue);overflow-wrap:anywhere}.report-content table{border-collapse:collapse;width:100%;font-size:12px;margin:20px 0}.report-content th,.report-content td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}.report-content th{background:var(--paper);font-weight:500}.report-content td{min-width:80px}.table-wrap{overflow:auto}.no-js-note{padding:12px;background:var(--paper);font-size:12px}.source-focus{animation:focusSource 1.2s ease}@keyframes focusSource{0%{background:#e8eefc}100%{background:white}}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(min-width:1600px){main{padding:0 64px}.hero-art{padding:30px 34px}.hero-grid{gap:64px}.hero h1{font-size:38px}}
+    @media(max-width:1180px){:root{--rail:184px}.sidebar{padding-left:24px;padding-right:16px}.nav-link.active:before{left:-24px}main{padding:0 32px}.hero-grid{gap:25px;grid-template-columns:1.15fr 1fr}.hero-art{padding:22px 20px 18px;min-height:0}.hero-word{font-size:119px}.hero h1{font-size:28px}.hero-description{font-size:13px}.meta-item{padding:19px 13px;gap:9px}.meta-number{font-size:29px}.meta-method{padding-left:15px}.section{padding:55px 0}.section-label{display:none}.section h2{font-size:27px}.phase{padding:21px 15px}.phase h3{font-size:16px}.top-date{display:none}}
+    @media(max-width:960px){:root{--rail:0px}.sidebar{display:none}.topbar{padding:0 24px}.mobile-menu{display:flex!important}.sidebar.mobile-open{display:flex;width:260px;box-shadow:18px 0 35px #17191e16}.nav-link.active:before{left:-24px}.page{margin-left:0}main{padding:0 32px}.hero-grid{grid-template-columns:1.15fr 1fr;gap:30px}.hero-word{font-size:125px}.hero h1{font-size:29px}.hero-art{max-width:420px}.hero-meta{grid-template-columns:repeat(3,1fr) 1.45fr}.meta-number{font-size:30px}.experiment{grid-template-columns:135px 1fr 1fr}.source-tools{gap:12px}.report-callout{align-items:flex-start}.report-buttons{justify-content:flex-end}}
+    @media(max-width:680px){:root{--header:58px}html{scroll-padding-top:80px}.topbar{padding:0 18px;gap:8px}.brand{font-size:13px;gap:9px}.brand-mark{width:22px;height:22px;padding:4px}.brand-sub,.brand-divider{display:none}.top-actions{gap:18px}.top-actions .print-action{display:none}.top-actions button{font-size:11px}.top-actions button svg{width:15px;height:15px}main{padding:0 22px}.hero{padding-top:28px}.eyebrow{font-size:10px;gap:9px}.hero-grid{grid-template-columns:1fr;margin-top:25px;gap:28px}.hero-word{font-size:117px;letter-spacing:-.08em;line-height:.9;margin-left:-5px}.hero h1{font-size:29px;line-height:1.5;margin-top:24px}.hero-description{font-size:13px;max-width:480px;margin-top:15px}.hero-actions{margin-top:20px;gap:10px}.button{padding:10px 15px;gap:18px;min-height:43px;font-size:11px}.hero-art{min-height:0;max-width:none;padding:20px 23px 15px}.hero-art svg{height:245px;margin-top:8px}.art-caption{font-size:10px}.hero-meta{margin-top:25px;grid-template-columns:repeat(3,1fr)}.meta-item{padding:18px 10px;gap:7px;flex-direction:column;align-items:flex-start}.meta-item:nth-child(3){border:0}.meta-item span:last-child{font-size:10px}.meta-number{font-size:33px}.meta-method{grid-column:1/-1;border-top:1px solid var(--line);padding:12px 0;font-size:10px;display:block}.meta-method strong{margin-right:10px}.section{padding:43px 0}.section-heading{margin-bottom:23px}.section-title{gap:12px}.section-num{font-size:11px}.section h2{font-size:25px}.section-sub{margin:10px 0 0 27px;font-size:12px}.thesis{font-size:21px;margin-left:0;line-height:1.75}.filter-bar{gap:3px;margin-bottom:15px}.filter-button{padding:6px 9px;font-size:11px}.filter-count{width:100%;margin:5px 0 0;font-size:10px}.findings{grid-template-columns:1fr}.finding,.finding:nth-of-type(even){padding:20px 0;border-left:0;grid-template-columns:26px 1fr;gap:10px}.finding h3{font-size:16px}.finding p{font-size:12px}.tabs{gap:24px}.tab{font-size:12px}.capability-panel{grid-template-columns:1fr;gap:25px;padding:24px 0}.panel-lead h3{font-size:23px}.panel-lead p{font-size:12px;margin-top:10px}.journey{padding:20px}.journey-steps{grid-template-columns:repeat(3,1fr);gap:20px 13px}.architecture{grid-template-columns:1fr;gap:0}.arch-zone{padding:23px}.arch-boundary{height:38px;transform:rotate(90deg)}.guardrail{display:block;padding:12px 15px}.guardrail strong{font-size:14px}.guardrail p{margin-top:7px;font-size:11px}.subheading{margin-top:25px;gap:10px;align-items:flex-start}.subheading h3{font-size:17px}.subheading span{font-size:10px;max-width:100px;text-align:right}.payment-switch .tab{padding:11px 16px}.payment-panel{padding:21px}.payment-steps{grid-template-columns:1fr;gap:12px}.payment-arrow{transform:rotate(90deg);margin-left:0;width:17px;height:17px}.payment-step h4{font-size:14px}.payment-step p{font-size:11px}.payment-boundary{font-size:11px;margin-top:18px}.price-grid{grid-template-columns:1fr}.price{border-right:0;border-bottom:1px solid var(--line);padding:20px 22px;display:grid;grid-template-columns:1fr 1fr;gap:5px 15px}.price:last-child{border-bottom:0}.price-name{grid-column:1;font-size:13px}.price-value{grid-column:1;grid-row:2/4;margin:5px 0;font-size:39px}.price-quota{grid-column:2;grid-row:2;font-size:13px;align-self:end}.price-detail{grid-column:2;grid-row:3;font-size:10px;margin:0}.commercial-note{grid-template-columns:1fr;gap:12px;padding:19px}.commercial-note h4{display:inline;margin-left:9px;font-size:13px}.commercial-note p{font-size:11px}.comparison{font-size:11px;table-layout:auto}.comparison th:first-child{width:23%}.comparison th,.comparison td{padding:12px 9px}.comparison td:last-child,.comparison th:last-child{display:none}.risk-grid{grid-template-columns:1fr}.risk summary{font-size:13px;padding:18px 26px 18px 0}.risk-body{font-size:11px}.unknowns{font-size:11px;line-height:1.9}.jd-banner{padding:24px 21px}.jd-banner h3{font-size:23px;line-height:1.6}.jd-banner p{font-size:11px}.proposed-flow{gap:10px;font-size:11px;row-gap:12px}.proposed-flow svg{width:13px}.implication summary{grid-template-columns:33px 1fr;gap:10px;padding:19px 29px 19px 0}.implication-number{font-size:23px}.implication h3{font-size:15px}.implication-summary{font-size:11px}.implication-body{padding:0 12px 21px 43px;grid-template-columns:1fr;gap:15px}.implication-body p{font-size:11px}.roadmap{grid-template-columns:1fr 1fr}.phase{padding:20px}.phase:nth-child(2){border-right:0}.phase:nth-child(-n+2){border-bottom:1px solid var(--line)}.phase p{font-size:11px}.phase-evidence{font-size:10px;margin-top:15px;padding-top:12px}.phase-evidence strong{font-size:10px}.experiment{grid-template-columns:1fr;gap:9px;padding:18px 0}.experiment h4{font-size:13px}.experiment p{font-size:11px}.experiment .stop{padding:0;border:0}.experiment .stop:before{content:"未通过时：";color:var(--ink)}.metrics{gap:6px;margin-top:14px}.metrics span{font-size:9px;padding:4px 7px}.source-tools{display:block}.source-tools .filter-bar{gap:0}.search-box{width:100%;margin-top:13px}.source-list{grid-template-columns:1fr}.source-title a{font-size:12px}.source-item p{font-size:10px}.local-materials{padding:18px}.local-files{gap:12px;flex-direction:column}.report-callout{flex-direction:column;gap:20px}.report-callout h3{font-size:22px}.report-callout p{font-size:11px}.report-buttons{justify-content:flex-start}.footer{display:block;font-size:10px;line-height:1.9}.footer div:last-child{margin-top:15px}.to-top{bottom:16px;right:15px;width:36px;height:36px}.report-dialog{width:100%;max-width:100%;height:100dvh;max-height:100dvh;margin:0;border:0}.dialog-header{padding:13px 18px}.dialog-header h2{font-size:12px}.report-content{padding:24px 22px 40px;font-size:12px}.report-content h1{font-size:24px}.report-content h2{font-size:20px}.report-content h3{font-size:16px}.report-content table{font-size:10px}.report-content th,.report-content td{padding:8px}.reading-note{font-size:10px}}
+    @media(min-width:961px) and (max-height:780px){.sidebar{padding-top:25px;padding-bottom:18px}.rail-eyebrow{margin-bottom:12px}.sidebar nav{gap:2px}.nav-link{padding:8px 0}.rail-footer{padding-top:20px}.rail-link{margin-top:13px}}
+    @media(max-width:680px){.desktop-break,.jd-banner h3 br{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+    @media print{@page{size:A4;margin:18mm}html,body{height:auto;overflow:visible!important;background:white}body>*:not(.report-dialog){display:none!important}.report-dialog{display:block!important;position:static;width:100%;max-width:none;height:auto;max-height:none;margin:0;border:0;overflow:visible}.report-dialog::backdrop,.dialog-header{display:none!important}.dialog-shell,.report-content{display:block;height:auto;max-height:none;overflow:visible;padding:0}.report-content{font-size:10pt;line-height:1.65}.report-content h1{font-size:24pt}.report-content h2{font-size:17pt;break-after:avoid}.report-content h3{font-size:13pt;break-after:avoid}.report-content p,.report-content li{orphans:3;widows:3}.report-content table{font-size:8pt}.report-content tr{break-inside:avoid}.table-wrap{overflow:visible}.report-content a{color:var(--ink)}.report-content a[href^=http]{overflow-wrap:anywhere}.report-content thead{display:table-header-group}}
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="external" viewBox="0 0 24 24"><path d="M8 5H5v14h14v-3M12 5h7v7M19 5 9 15" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol><symbol id="search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m15 15 5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol></svg>
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="topbar"><a class="brand" href="#top" aria-label="Muse 产品调研，回到顶部"><span class="brand-mark" aria-hidden="true"><span></span></span><span>Muse 产品调研</span></a><div class="top-actions"><span class="top-date">研究截止 2026.09.23</span><button class="print-action" type="button" data-print>打印 / PDF</button><button type="button" data-download><svg width="16" height="16" aria-hidden="true"><use href="#download"/></svg>下载报告</button><button class="mobile-menu" type="button" aria-label="打开章节目录" aria-expanded="false" aria-controls="sidebar"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button></div><div class="progress" aria-hidden="true"></div></header>
+  <aside class="sidebar" id="sidebar"><div class="rail-eyebrow">研究目录 · CONTENTS</div><nav aria-label="研究章节"><a class="nav-link active" href="#overview"><span>01</span>核心结论</a><a class="nav-link" href="#product"><span>02</span>产品解构</a><a class="nav-link" href="#execution"><span>03</span>执行与支付</a><a class="nav-link" href="#business"><span>04</span>商业与竞争</a><a class="nav-link" href="#risks"><span>05</span>风险边界</a><a class="nav-link" href="#implications"><span>06</span>京东支付启示</a><a class="nav-link" href="#validation"><span>07</span>验证路径</a><a class="nav-link" href="#sources"><span>08</span>资料与全文</a></nav><div class="rail-footer"><div class="rail-mark">M.</div><div class="rail-note">基于公开资料的产品研究<br>事实、判断与假设分开呈现<br>2026年9月23日</div><button class="rail-link" type="button" data-report>阅读完整报告<svg width="16" height="16" aria-hidden="true"><use href="#arrow"/></svg></button></div></aside>
+  <div class="page" id="top"><main id="main">
+    <noscript><p class="no-js-note">此网页的核心内容可直接阅读。章节切换、资料筛选和完整报告弹窗需要启用 JavaScript；请启用 JavaScript 以阅读完整报告及使用下载功能。</p></noscript>
+    <section class="hero" aria-labelledby="hero-title"><div class="eyebrow">Meta 个人 AI Agent · 产品调研与支付启示</div><div class="hero-grid"><div><div class="hero-word" aria-hidden="true">Muse.</div><h1 id="hero-title"><span class="visually-hidden">Muse：</span>从个人助理，<br>到受控的行动系统。</h1><p class="hero-description">当 AI 开始替人推进事务，值得研究的不只是它能做什么，<br class="desktop-break">还有谁来授权、如何执行，以及出错后怎样恢复。</p><div class="hero-actions"><a class="button primary" href="#overview">阅读核心结论<svg width="17" height="17" aria-hidden="true"><use href="#arrow"/></svg></a><a class="button" href="#implications">直达支付启示<svg width="17" height="17" aria-hidden="true"><use href="#arrow"/></svg></a></div></div><figure class="hero-art" style="margin:0" aria-labelledby="system-caption"><div class="art-heading"><span>从目标到结果</span><span>产品结构概念图</span></div><svg viewBox="0 0 360 305" role="img" aria-labelledby="diagram-title diagram-desc"><title id="diagram-title">Muse 的受控委托链路</title><desc id="diagram-desc">个人上下文进入 Muse，持续推进目标并调用工具；敏感动作交由用户批准，形成可检查的结果。</desc><g fill="none" stroke="#6f8bd5" stroke-width="1"><path d="M18 40H342M18 110H342M18 180H342M18 250H342M55 17V284M180 17V284M305 17V284" opacity=".35"/><path d="M99 54H180V93M265 54H180M180 156V184M111 211H73V255M249 211H287V255"/><path d="m176 178 4 6 4-6M69 249l4 6 4-6M283 249l4 6 4-6" stroke="#fff"/></g><g fill="#002fa7" stroke="#89a2e3"><rect x="24" y="32" width="109" height="43"/><rect x="228" y="32" width="109" height="43"/><rect x="111" y="184" width="138" height="53"/><rect x="24" y="255" width="99" height="35"/><rect x="237" y="255" width="99" height="35"/></g><rect x="105" y="93" width="150" height="65" fill="white"/><g font-family="Helvetica Neue, PingFang SC, sans-serif" text-anchor="middle"><text x="78" y="59" fill="white" font-size="12">个人上下文</text><text x="282" y="59" fill="white" font-size="12">持续目标</text><text x="180" y="123" fill="#002fa7" font-size="27" font-weight="500" letter-spacing="-1.2">Muse</text><text x="180" y="144" fill="#002fa7" font-size="9">规划 · 工具 · 后台执行</text><text x="180" y="207" fill="white" font-size="12">独立权限裁决</text><text x="180" y="225" fill="#cfdbff" font-size="9">必要时交回用户批准</text><text x="74" y="277" fill="white" font-size="11">工作产物</text><text x="287" y="277" fill="white" font-size="11">订单与行动</text></g><circle cx="180" cy="171" r="3" fill="white"/><path d="M18 18h9M18 18v9M342 18h-9M342 18v9" fill="none" stroke="#bdd0ff"/></svg><figcaption class="art-caption" id="system-caption"><span>模型提出动作，可信系统裁决权限。</span><span>依据 M02 / M03</span></figcaption></figure></div><div class="hero-meta"><div class="meta-item"><span class="meta-number">13</span><span>完整研究章节</span></div><div class="meta-item"><span class="meta-number">22</span><span>来源条目</span></div><div class="meta-item"><span class="meta-number">07</span><span>支付行动启示</span></div><div class="meta-method"><strong>公开资料案头研究，非产品实测。</strong><span>来源含媒体、用户材料与未取得全文项。</span></div></div></section>
+    <section class="section" id="overview" aria-labelledby="overview-title"><div class="section-heading"><div><div class="section-title"><span class="section-num">01</span><h2 id="overview-title">先看结论</h2></div><p class="section-sub">Muse 的研究价值，在于把多种能力组织成一段完整的委托关系。</p></div><span class="section-label">EXECUTIVE SUMMARY</span></div><p class="thesis">它不只是一个更能干的聊天入口，<br>而是把<em>上下文、持续任务、执行与批准</em>放进同一套流程。</p><div class="filter-bar" role="group" aria-label="筛选结论证据类型"><button class="filter-button" data-finding-filter="all" aria-pressed="true">全部结论</button><button class="filter-button" data-finding-filter="fact" aria-pressed="false">官方描述</button><button class="filter-button" data-finding-filter="analysis" aria-pressed="false">研究判断</button><button class="filter-button" data-finding-filter="media" aria-pressed="false">媒体线索</button><span class="filter-count" id="finding-count" role="status">6 项结论</span></div><div class="findings">
+      <article class="finding" data-evidence="fact"><span class="finding-number">01</span><div><span class="tag fact">官方描述</span><h3>从一次问答，走向持续协作</h3><p>主对话、侧对话、Goals、记忆、定时任务和 Artifacts，让任务可以跨会话持续推进。存在这些功能，不等于长期任务已经可靠。<a class="citation" href="#source-M02">[M02]</a><a class="citation" href="#source-M12">[M12]</a></p></div></article>
+      <article class="finding" data-evidence="fact"><span class="finding-number">02</span><div><span class="tag fact">官方描述</span><h3>工具覆盖，不等于权限放开</h3><p>连接器、浏览器和 Mac 扩大操作范围；但不同接入方式具有不同信任成本。尤其不能把自定义连接器视为已获 Meta 审核。<a class="citation" href="#source-M05">[M05]</a><a class="citation" href="#source-M10">[M10]</a></p></div></article>
+      <article class="finding" data-evidence="fact"><span class="finding-number">03</span><div><span class="tag fact">官方描述</span><h3>购买，仍然需要逐笔批准</h3><p>后台推进任务不等于自主付款。支付帮助页明确每次购买前请求批准，通用动作的“始终允许”不能解释成无限制支付授权。<a class="citation" href="#source-M06">[M06]</a><a class="citation" href="#source-M07">[M07]</a></p></div></article>
+      <article class="finding" data-evidence="fact"><span class="finding-number">04</span><div><span class="tag fact">官方描述</span><h3>关键控制，位于主 Agent 之外</h3><p>主 Agent、Sentinel 权限裁决、凭证保管和可信连接器分离。架构假设 Agent 可能误判或受攻击，而不是假设模型不会出错。<a class="citation" href="#source-M03">[M03]</a></p></div></article>
+      <article class="finding" data-evidence="media"><span class="finding-number">05</span><div><span class="tag media">媒体线索</span><h3>交易抽成是方向，不是收入事实</h3><p>订阅方案已有官方说明；交易收费来自媒体对高管采访的转述。本次未取得正式费率、上线时间、适用交易或商户合同。<a class="citation" href="#source-M04">[M04]</a><a class="citation" href="#source-M20">[M20]</a></p></div></article>
+      <article class="finding" data-evidence="analysis"><span class="finding-number">06</span><div><span class="tag">研究判断</span><h3>长期价值与风险，来自同一处</h3><p>更深的上下文、记忆和持续代办可能增加复用价值，也会扩大权限暴露与错误影响。能否提升留存、降低成本，仍要用真实任务验证。<a class="citation" href="#source-M03">[M03]</a><a class="citation" href="#source-M14">[M14]</a></p></div></article>
+    </div><p class="reading-note">阅读提示：“官方描述”表示有公开来源支撑，不表示经过本报告实测；“研究判断”和“媒体线索”不作为已兑现能力或经营结果。</p></section>
+    <section class="section" id="product" aria-labelledby="product-title"><div class="section-heading"><div><div class="section-title"><span class="section-num">02</span><h2 id="product-title">不止一个聊天窗口</h2></div><p class="section-sub">用户交付目标，系统持续推进；关键决定仍然回到用户手中。</p></div><span class="section-label">PRODUCT ANATOMY</span></div><div class="tabs" role="tablist" aria-label="Muse 产品能力"><button class="tab" id="cap-tab-work" role="tab" aria-selected="true" aria-controls="cap-work" tabindex="0">长期协作</button><button class="tab" id="cap-tab-tools" role="tab" aria-selected="false" aria-controls="cap-tools" tabindex="-1">工具与连接</button><button class="tab" id="cap-tab-output" role="tab" aria-selected="false" aria-controls="cap-output" tabindex="-1">记忆与交付</button></div>
+      <div class="capability-panel" role="tabpanel" id="cap-work" aria-labelledby="cap-tab-work"><div class="panel-lead"><h3>从“我来反复跟进”<br>到“我来处理关键决定”</h3><p>待验证的价值不是少输入几次提示词，而是降低整个任务的处理与监督成本。<span class="tag">研究判断</span></p></div><div><div class="feature-row"><h4>主对话与侧对话</h4><p>用于持续分派任务和组织主题；侧对话不构成已承诺的严格数据隔离空间。<a class="citation" href="#source-M15">[M15]</a></p></div><div class="feature-row"><h4>Goals 与 Ideas</h4><p>Goals 承载长期目标，Ideas 帮助发现可委托任务。引导首次成功是一种设计意图，不是已验证的增长效果。<a class="citation" href="#source-M02">[M02]</a></p></div><div class="feature-row"><h4>Activity 与 Upcoming</h4><p>活动记录、已批准动作和即将执行的任务，让后台工作可见、可检查、可停止。<a class="citation" href="#source-M07">[M07]</a><a class="citation" href="#source-M12">[M12]</a></p></div></div></div>
+      <div class="capability-panel" role="tabpanel" id="cap-tools" aria-labelledby="cap-tab-tools" hidden><div class="panel-lead"><h3>接入的不是一个工具，<br>而是一段信任关系</h3><p>云端浏览器、文件与终端，加上授权后的本地能力，扩大任务边界，也扩大权限管理需求。<a class="citation" href="#source-M03">[M03]</a><a class="citation" href="#source-M10">[M10]</a></p></div><div><div class="feature-row"><h4>内置与自定义连接器</h4><p>内置连接器与服务方对接；自定义连接器可能需 API 信息，Meta 明确不审核其行为及信息使用。<a class="citation" href="#source-M05">[M05]</a></p></div><div class="feature-row"><h4>可观察的浏览器执行</h4><p>用户可以查看、接管和停止操作。能登录网站，不等于用户允许所有动作；购买仍需确认。<a class="citation" href="#source-M09">[M09]</a><a class="citation" href="#source-M06">[M06]</a></p></div><div class="feature-row"><h4>Mac 本地文件与应用</h4><p>官方提供本地应用分级控制；但其依赖的完整磁盘访问属于广泛 OS 权限，不能理解为天然仅覆盖指定文件。<a class="citation" href="#source-M10">[M10]</a></p></div></div></div>
+      <div class="capability-panel" role="tabpanel" id="cap-output" aria-labelledby="cap-tab-output" hidden><div class="panel-lead"><h3>交付可以复用，<br>上下文也需要治理</h3><p>长期记忆减少重复解释，文件式产物沉淀工作结果；同时要允许检查、修改、删除和退出。<span class="tag">研究判断</span></p></div><div><div class="feature-row"><h4>记忆与人格</h4><p>支持沟通偏好、文件式记忆查看或编辑，以及从其他助手导入历史。错误记忆也可能持续影响行动。<a class="citation" href="#source-M14">[M14]</a></p></div><div class="feature-row"><h4>Artifacts 与 Library</h4><p>产物包括文档、表格、图片、代码和交互网页，可保存并后续修改；外部分享需要开启或批准。<a class="citation" href="#source-M13">[M13]</a></p></div><div class="feature-row"><h4>调度不等于正确交付</h4><p>应分别观察调度触发、任务执行、结果正确和通知到达。提醒送达不能证明跨站复杂任务可靠。<a class="citation" href="#source-M12">[M12]</a><span class="tag">测量建议</span></p></div></div></div>
+      <div class="journey"><div class="micro-label">用户旅程 · 以下问题是研究建议，非实测表现</div><div class="journey-steps"><div class="journey-step"><b>01</b><h4>开始</h4><p>完成第一件有用的事</p></div><div class="journey-step"><b>02</b><h4>连接</h4><p>知道交出了什么权限</p></div><div class="journey-step"><b>03</b><h4>执行</h4><p>看懂进度与异常</p></div><div class="journey-step"><b>04</b><h4>批准</h4><p>确认明确的动作对象</p></div><div class="journey-step"><b>05</b><h4>交付</h4><p>核查结果是否正确</p></div><div class="journey-step"><b>06</b><h4>持续</h4><p>调整、撤销或退出</p></div></div></div><p class="reading-note">2026年9月8日发布公告；本次读取的订阅页仍标示有限测试。公告日期不代表所有地区与账户同时开放。<a class="citation" href="#source-M01">[M01]</a><a class="citation" href="#source-M04">[M04]</a></p></section>
+    <section class="section" id="execution" aria-labelledby="execution-title"><div class="section-heading"><div><div class="section-title"><span class="section-num">03</span><h2 id="execution-title">会行动，不等于能自行批准</h2></div><p class="section-sub">架构上隔离执行与授权；购买时区分支付路径与各自边界。</p></div><span class="section-label">CONTROL & PAYMENT</span></div><div class="architecture"><div class="arch-zone"><div class="zone-label">任务执行域</div><h3>主 Agent</h3><p>理解目标、拆解计划、准备工具与交易请求。它可能误判，也可能受到提示词注入。</p><div class="zone-chips"><span>规划</span><span>浏览器 / 文件</span><span>工具请求</span></div></div><div class="arch-boundary"><svg width="28" height="28" aria-label="请求进入可信控制域"><use href="#arrow"/></svg></div><div class="arch-zone trusted"><div class="zone-label">分离的安全域</div><h3>权限裁决与可信执行</h3><p>Sentinel 决定允许、拒绝或询问用户；凭证独立保管，在获准请求的可信边界注入。</p><div class="zone-chips"><span>Sentinel</span><span>凭证保管</span><span>连接器执行</span></div></div></div><p class="reading-note" style="margin-top:-12px;margin-bottom:24px">依据官方安全说明整理的概念图，并非部署拓扑。隔离不等于没有共同失效，也不代表已彻底解决提示词注入。<a class="citation" href="#source-M03">[M03]</a></p><div class="guardrail"><strong>每次购买前，仍需用户批准。</strong><p>通用权限中的“始终允许”不能外推为无限制自主支付。<a class="citation" href="#source-M06">[M06]</a><a class="citation" href="#source-M07">[M07]</a></p></div><div class="subheading"><h3>两条支付路径，不是同一种保护</h3><span>机制图解 · 非操作界面</span></div><div class="payment-switch" role="tablist" aria-label="支付路径"><button class="tab" role="tab" id="pay-tab-link" aria-controls="pay-link" aria-selected="true" tabindex="0">Link 一次性卡</button><button class="tab" role="tab" id="pay-tab-saved" aria-controls="pay-saved" aria-selected="false" tabindex="-1">商户已保存银行卡</button></div><div class="payment-panel" id="pay-link" role="tabpanel" aria-labelledby="pay-tab-link"><div class="payment-steps"><div class="payment-step"><b>01 · 准备</b><h4>Muse 准备订单</h4><p>查找商品、比较和填写订单，进入结账流程。</p></div><svg class="payment-arrow" width="22" height="22" aria-hidden="true"><use href="#arrow"/></svg><div class="payment-step confirm"><b>02 · 批准</b><h4>用户审阅并确认购买</h4><p>批准具体订单，而不是授予永久、无范围的付款许可。</p></div><svg class="payment-arrow" width="22" height="22" aria-hidden="true"><use href="#arrow"/></svg><div class="payment-step"><b>03 · 支付</b><h4>Link 一次性卡执行</h4><p>凭证受商户、金额和时间限制，由商户履约。</p></div></div><p class="payment-boundary"><strong>保护边界：</strong>Link 购买保护存在资格、类型和限额条件，不能理解为对所有 Agent 错误无条件赔付。<a class="citation" href="#source-M06">[M06]</a><a class="citation" href="#source-M16">[M16]</a></p></div><div class="payment-panel" id="pay-saved" role="tabpanel" aria-labelledby="pay-tab-saved" hidden><div class="payment-steps"><div class="payment-step"><b>01 · 准备</b><h4>进入商户账户结账</h4><p>商户账户已有支付方式，不要求所有交易都经过 Link。</p></div><svg class="payment-arrow" width="22" height="22" aria-hidden="true"><use href="#arrow"/></svg><div class="payment-step confirm"><b>02 · 批准</b><h4>用户仍需逐笔批准</h4><p>银行卡已保存，不代表用户已经同意本次购买。</p></div><svg class="payment-arrow" width="22" height="22" aria-hidden="true"><use href="#arrow"/></svg><div class="payment-step"><b>03 · 支付</b><h4>使用商户已保存银行卡</h4><p>沿商户既有支付关系完成付款，并由商户履约。</p></div></div><p class="payment-boundary"><strong>保护边界：</strong>不应把 Link 的保护外推至此路径。需区分支付成功、商品正确、商户履约与争议处理。<a class="citation" href="#source-M06">[M06]</a><a class="citation" href="#source-M16">[M16]</a></p></div><p class="reading-note">帮助页中的用户责任提示属于产品条款信息，本报告不将其解释为某一法域下的最终法律责任认定。</p></section>
+    <section class="section" id="business" aria-labelledby="business-title"><div class="section-heading"><div><div class="section-title"><span class="section-num">04</span><h2 id="business-title">订阅已明确，经济性仍待证明</h2></div><p class="section-sub">用户购买的价值应是正确完成任务，而不是消耗更多 Token。</p></div><span class="section-label">BUSINESS & POSITIONING</span></div><div class="price-grid"><article class="price"><div class="price-name">免费</div><div class="price-value">$0</div><p class="price-quota">有限使用量</p><p class="price-detail">官方该页未披露具体 Token 数</p></article><article class="price"><div class="price-name">Power</div><div class="price-value">$20<span>/ 月</span></div><p class="price-quota">5 亿 Muse tokens / 周</p><p class="price-detail">订阅每月自动续费</p></article><article class="price"><div class="price-name">Maximum</div><div class="price-value">$100<span>/ 月</span></div><p class="price-quota">30 亿 Muse tokens / 周</p><p class="price-detail">订阅每月自动续费</p></article></div><p class="reading-note">截至2026年9月23日的官方帮助页信息。权益、资格和可用性可能因地区与账户变化，以订阅前展示为准；免费“每周1亿 Token”未获该页确认。<a class="citation" href="#source-M04">[M04]</a></p><div class="commercial-note"><div><span class="tag media">媒体转述</span><h4>未来交易收费</h4></div><p>媒体转述高管讨论对购物、节省或创造收益收取小比例费用的可能性；尚无本次可核实的正式费率、上线时间和商户条款。不能将这一战略方向当成已有收入或确定终局。<a class="citation" href="#source-M20">[M20]</a></p></div><div class="subheading"><h3>竞品比较：看重心，不做未经实测的排名</h3></div><table class="comparison"><thead><tr><th scope="col">对象</th><th scope="col">官方材料体现的重点</th><th scope="col">研究意义</th></tr></thead><tbody><tr><td>Muse</td><td>个人上下文、生活事务、长期任务、可观察执行与购买。<a class="citation" href="#source-M01">[M01]</a><a class="citation" href="#source-M06">[M06]</a></td><td>能否形成持续的个人委托关系？</td></tr><tr><td>ChatGPT Work</td><td>跨工具、文件和桌面流程，将上下文转成工作产物。<a class="citation" href="#source-M18">[M18]</a></td><td>工作交付和持续任务并非 Muse 独有。</td></tr><tr><td>Claude 工作产品</td><td>跨文件与工具执行、计划与监督、浏览器及后台工作。<a class="citation" href="#source-M19">[M19]</a></td><td>“能操作电脑”不自动形成持久差异。</td></tr></tbody></table><p class="reading-note">以上仅比较产品重心，非完整规格、价格或性能榜单。单位经济需计入推理、运行、重试、人工监督、客服与风险成本；本次没有每任务消耗或毛利数据。</p></section>
+    <section class="section" id="risks" aria-labelledby="risks-title"><div class="section-heading"><div><div class="section-title"><span class="section-num">05</span><h2 id="risks-title">能力之外，六条必须看清的边界</h2></div><p class="section-sub">点击展开证据与含义。安全能力不是“零风险”的同义词。</p></div><span class="section-label">RISK BOUNDARIES</span></div><div class="risk-grid">
+      <details class="risk" open><summary>Secure VM ≠ Meta 技术上无法访问</summary><div class="risk-body">当前 Secure VM 不从技术上排除 Meta 为支持、安全或运营而访问。<strong>Confidential VM 在所读资料中仍属于未来计划</strong>，不能将未来能力写成当前保证。<a class="citation" href="#source-M03">[M03]</a></div></details>
+      <details class="risk"><summary>训练开关默认开启，不是默认退出</summary><div class="risk-body">官方说明训练设置默认开启，用户可选择退出。<strong>退出训练不等于撤回所有既有学习效果</strong>。虚拟机和对话不直接共享给广告系统，也不等于浏览与交易不会间接影响广告。<a class="citation" href="#source-M08">[M08]</a><a class="citation" href="#source-M03">[M03]</a></div></details>
+      <details class="risk"><summary>断开连接 ≠ 删除历史与记忆</summary><div class="risk-body">断开连接停止后续交换，但既有对话或记忆可能保留，需要另行管理。另需注意，<strong>同一 Accounts Center 的 Facebook、Instagram、Threads 会自动连接</strong>，不能笼统写成全部逐项手动开启。<a class="citation" href="#source-M05">[M05]</a><a class="citation" href="#source-M08">[M08]</a></div></details>
+      <details class="risk"><summary>自定义连接器 ≠ 官方已审核</summary><div class="risk-body">Meta 明确不审核自定义连接器的行为和信息使用。<strong>能接入与值得信任是两件事</strong>；应独立检查服务方、权限范围、数据去向和凭证使用。后者是本报告建议。<a class="citation" href="#source-M05">[M05]</a></div></details>
+      <details class="risk"><summary>指定文件操作 ≠ 系统权限细粒度隔离</summary><div class="risk-body">Mac 可设置本地应用为关闭、只读或读写交互，但其所依赖的<strong>完整磁盘访问范围很广</strong>。产品层面的使用承诺，不等于操作系统权限天然只覆盖指定文件。<a class="citation" href="#source-M10">[M10]</a></div></details>
+      <details class="risk"><summary>付款成功 ≠ 履约成功或无条件赔付</summary><div class="risk-body">商户承担订单履约，Link 保护受资格和限额约束；商户已存卡路径也不能自动套用 Link 保护。<strong>授权、资金、商品、履约和争议</strong>应被分别检查。<a class="citation" href="#source-M06">[M06]</a><a class="citation" href="#source-M16">[M16]</a></div></details>
+    </div><p class="unknowns"><strong>本次未取得证据：</strong>真实活跃、留存、收入、交易量、任务成功率、单位经济；Reuters 相关线索未取得全文。Shop Pay、1Password、眼镜与 Confidential VM 不作为已普遍可用能力。</p></section>
+    <section class="section" id="implications" aria-labelledby="implications-title"><div class="section-heading"><div><div class="section-title"><span class="section-num">06</span><h2 id="implications-title">对京东支付，真正值得带走什么</h2></div><p class="section-sub">以下是结合三份本地支付材料形成的建议，不是既有系统能力声明。</p></div><span class="section-label">IMPLICATIONS FOR JD PAY</span></div><div class="jd-banner"><div class="micro-label">核心建议 · 不必先复制一个 Muse</div><h3>先把支付做成 Agent 可接入的<br>授权、执行与恢复服务。</h3><p>让 Agent 负责寻找和准备交易，让可信支付系统决定是否有权执行、约束执行范围，并把资金结果与异常处理闭环。</p><div class="proposed-flow"><span>标准请求</span><svg aria-hidden="true"><use href="#arrow"/></svg><span>授权校验</span><svg aria-hidden="true"><use href="#arrow"/></svg><span>受控执行</span><svg aria-hidden="true"><use href="#arrow"/></svg><span>状态查询</span><svg aria-hidden="true"><use href="#arrow"/></svg><span>退款与证据</span></div></div>
+      <details class="implication" open><summary><span class="implication-number">01</span><div><h3>先做交易执行接口，不必先争夺通用入口</h3><p class="implication-summary">确认谁会持续调用，再组织标准请求、授权、查询、退款与证据能力。</p></div></summary><div class="implication-body"><div><h4>从 MUSE 观察到</h4><p>Muse 准备任务和订单，Link 及商户既有支付关系承接资金动作。分工比复制整个入口更值得研究。<a class="citation" href="#source-M06">[M06]</a><a class="citation" href="#source-M17">[M17]</a></p></div><div><h4>落地时先验证</h4><p>找到实际调用方与可重复任务。国内资金路径、资质、渠道协议和责任需另行核验，不能直接照搬海外一次性卡。</p></div></div></details>
+      <details class="implication"><summary><span class="implication-number">02</span><div><h3>把授权变成可管理的对象</h3><p class="implication-summary">看得见授权给谁、用于何事、额度、频率、有效期，以及如何撤销。</p></div></summary><div class="implication-body"><div><h4>从 MUSE 观察到</h4><p>权限设置、具体批准和活动记录独立呈现，不只保留一段聊天中的“同意”。<a class="citation" href="#source-M07">[M07]</a></p></div><div><h4>落地时先验证</h4><p>保存可关联的授权版本与单笔请求。参数变化要重新决策；撤销未来授权、取消在途交易和已付退款应明确区分。</p></div></div></details>
+      <details class="implication"><summary><span class="implication-number">03</span><div><h3>让支付控制位于不可绕过的执行路径</h3><p class="implication-summary">Agent 提出请求；可信支付域掌握规则、风控、凭证和最终执行。</p></div></summary><div class="implication-body"><div><h4>从 MUSE 观察到</h4><p>主 Agent 不能自批工具与网络动作，真实凭证也不由主模型直接保管。<a class="citation" href="#source-M03">[M03]</a></p></div><div><h4>落地时先验证</h4><p>模型不能自行增额、改授权或把聊天“说过可以”当作充分证据。不可绕过、幂等、防重放与最终资金状态均需单独验证。</p></div></div></details>
+      <details class="implication"><summary><span class="implication-number">04</span><div><h3>从逐笔确认开始，再验证有限自动化</h3><p class="implication-summary">先自动准备交易；获得真实理解与风险数据后，再评估受限自动执行。</p></div></summary><div class="implication-body"><div><h4>从 MUSE 观察到</h4><p>后台任务已经被纳入产品，但购买仍要求逐笔批准。自动推进与自动支付是不同层级的授权。<a class="citation" href="#source-M06">[M06]</a><a class="citation" href="#source-M12">[M12]</a></p></div><div><h4>落地时先验证</h4><p>对低额、短时、明确对象的场景比较总耗时、错误、撤回和争议。不要把免打扰率越高越好作为唯一目标。</p></div></div></details>
+      <details class="implication"><summary><span class="implication-number">05</span><div><h3>把恢复与售后，和扣款同批交付</h3><p class="implication-summary">回执、查询、未知状态、退款、对账和投诉证据，从首期就进入闭环。</p></div></summary><div class="implication-body"><div><h4>从 MUSE 观察到</h4><p>Link 保护有条件，Meta 不替所有商户履约，也未承诺所有任务失败由平台兜底。<a class="citation" href="#source-M06">[M06]</a><a class="citation" href="#source-M16">[M16]</a></p></div><div><h4>落地时先验证</h4><p>超时不能重复付款；退款与撤销应有确定状态。支付、Agent、商户使用可关联订单标识，客服能还原谁批准了什么。</p></div></div></details>
+      <details class="implication"><summary><span class="implication-number">06</span><div><h3>用反复发生的真实任务，建立长期价值</h3><p class="implication-summary">优先评估标准复购、订阅治理、企业低额采购，不以演示付款次数论成败。</p></div></summary><div class="implication-body"><div><h4>从 MUSE 观察到</h4><p>Goals、记忆、周期任务和可修改产物支撑持续使用，支付只是任务中的一个环节。<a class="citation" href="#source-M02">[M02]</a><a class="citation" href="#source-M12">[M12]</a></p></div><div><h4>落地时先验证</h4><p>看业务方是否持续发起、总耗时和差错是否下降。B 端虽有预算和审批基础，也有财务、采购系统协同成本，不能预设更快。</p></div></div></details>
+      <details class="implication"><summary><span class="implication-number">07</span><div><h3>先确认谁受益，再决定谁付费</h3><p class="implication-summary">验证接入方、商户、企业与用户的增量价值，后置模型市场和交易分成。</p></div></summary><div class="implication-body"><div><h4>从 MUSE 观察到</h4><p>订阅已有公开方案，交易收费尚未形成可验证的完整商业机制。<a class="citation" href="#source-M04">[M04]</a><a class="citation" href="#source-M20">[M20]</a></p></div><div><h4>落地时先验证</h4><p>拿到实际接受的合作或付费条件，再讨论执行服务、授权风控、费用控制或分成。不把口头“感兴趣”等同付费需求。</p></div></div></details><p class="reading-note">内部待核对：CloudTip / ClawTip 名称关系、A2P2 状态、渠道适用性和责任安排。本文不证明任何国内项目已上线或合规链路已确认。</p></section>
+    <section class="section" id="validation" aria-labelledby="validation-title"><div class="section-heading"><div><div class="section-title"><span class="section-num">07</span><h2 id="validation-title">用一个小场景，换取真实证据</h2></div><p class="section-sub">建议的 90 天验证路径，尚未执行。是否进入真实资金阶段取决于前置条件。</p></div><span class="section-label">VALIDATION ROADMAP</span></div><div class="roadmap"><article class="phase"><div class="phase-label">第 1–2 周</div><h3>确认真实任务</h3><p>盘点能力，访谈首个调用方；选择有商户、资金路径和退款规则的场景。</p><div class="phase-evidence">需要拿到的证据<strong>重复任务与现有成本基线</strong></div></article><article class="phase"><div class="phase-label">第 3–4 周</div><h3>验证授权理解</h3><p>做授权、确认、撤销与结果界面，形成异常案例，解释每笔为何允许或拒绝。</p><div class="phase-evidence">需要拿到的证据<strong>用户能正确解释授权边界</strong></div></article><article class="phase"><div class="phase-label">第 31–60 天</div><h3>跑通受控闭环</h3><p>在沙箱或批准的内部试点中，接入执行、查询、退款和审计。</p><div class="phase-evidence">需要拿到的证据<strong>端到端无未解释的断点</strong></div></article><article class="phase"><div class="phase-label">第 61–90 天</div><h3>小流量对照</h3><p>前置条件通过后对比原流程与新流程，判断继续、修改或停止。</p><div class="phase-evidence">需要拿到的证据<strong>正确性、恢复与成本可接受</strong></div></article></div><div class="subheading"><h3>四个假设，四道退出条件</h3><span>先建基线，再约定阈值</span></div><div class="experiment-list"><div class="experiment"><h4>用户愿意委托</h4><p>用真实任务测授权理解、接受和撤回原因。</p><p class="stop">理解不清就缩小权限或回到逐笔确认，不只修改文案。</p></div><div class="experiment"><h4>执行更有价值</h4><p>记录总耗时、人工介入与正确结果，对照原流程。</p><p class="stop">没有净收益就优化场景或停止自动化，不用交易额掩盖成本。</p></div><div class="experiment"><h4>控制与恢复可用</h4><p>演练越权、重复请求、超时、撤销与退款异常。</p><p class="stop">有资金或权限断点就不扩量，先把原因与最终状态查清。</p></div><div class="experiment"><h4>接入与收费有需求</h4><p>让非支付团队独立接入，访谈真正受益方。</p><p class="stop">无可接受条件就简化接口、调整收费对象或暂停平台化。</p></div></div><div class="metrics" aria-label="建议关注的指标"><span>正确完成率</span><span>授权理解</span><span>异常恢复时间</span><span>每次正确完成的全成本</span><span>持续复用</span><span>实际合作条件</span></div><p class="reading-note">尚无足够数据设置统一数值目标。风险阈值、停止条件与真实资金测试须先取得内部授权；小样本零事故不代表真实风险为零。</p></section>
+    <section class="section" id="sources" aria-labelledby="sources-title"><div class="section-heading"><div><div class="section-title"><span class="section-num">08</span><h2 id="sources-title">每个判断，都应找到它的出处</h2></div><p class="section-sub">22 个来源条目：19 项官方资料、1 项媒体转述、1 项未取得全文线索、1 项用户材料。</p></div><span class="section-label">SOURCES & FULL REPORT</span></div><div class="source-tools"><div class="filter-bar" role="group" aria-label="筛选资料来源"><button class="filter-button" data-source-filter="all" aria-pressed="true">全部</button><button class="filter-button" data-source-filter="official" aria-pressed="false">官方资料</button><button class="filter-button" data-source-filter="media" aria-pressed="false">媒体转述</button><button class="filter-button" data-source-filter="unverified" aria-pressed="false">未取得全文</button><button class="filter-button" data-source-filter="user" aria-pressed="false">用户材料</button></div><label class="search-box"><svg width="16" height="16" aria-hidden="true"><use href="#search"/></svg><span class="visually-hidden">搜索来源编号、标题或说明</span><input id="source-search" type="search" placeholder="搜索来源，如 M06、支付" autocomplete="off"></label></div><p class="source-status" id="source-status" role="status"></p><div class="source-list" id="source-list"><article class="source-item" id="source-M01" data-category="official"><div class="source-title"><a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/" target="_blank" rel="noopener noreferrer"><span class="source-id">M01</span><span>Meta产品公告</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>发布于2026年9月8日；定位、入口、购买与未来计划。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>about.fb.com</span></div></article>
+<article class="source-item" id="source-M02" data-category="official"><div class="source-title"><a href="https://introducing.muse.ai/" target="_blank" rel="noopener noreferrer"><span class="source-id">M02</span><span>How We Designed Muse</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>主对话、Goals、Ideas、Artifacts、确定性审批和设计动机；由M01官方公告链接指向。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>introducing.muse.ai</span></div></article>
+<article class="source-item" id="source-M03" data-category="official"><div class="source-title"><a href="https://security.muse.ai/" target="_blank" rel="noopener noreferrer"><span class="source-id">M03</span><span>How We Built Safety Into Muse</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>隔离、Sentinel、凭证、浏览器、支付、隐私及未来Confidential VM；由M01官方公告链接指向。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>security.muse.ai</span></div></article>
+<article class="source-item" id="source-M04" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/subscriptions/1021145227643680/" target="_blank" rel="noopener noreferrer"><span class="source-id">M04</span><span>About Muse subscriptions</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>价格、额度、地区与订阅资格；本次浏览器读到正文。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M05" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/1687253048996149/" target="_blank" rel="noopener noreferrer"><span class="source-id">M05</span><span>How Muse works with Connectors</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>内置与自定义连接、账户关联及断开边界。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M06" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/1436362127544482/" target="_blank" rel="noopener noreferrer"><span class="source-id">M06</span><span>How Muse works with payments</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>Link与商户已存卡两类路径、逐笔确认及责任提示。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M07" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/1385290430137537/" target="_blank" rel="noopener noreferrer"><span class="source-id">M07</span><span>Guidance and approval</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>权限设置、不同批准范围、活动记录和停止动作。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M08" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/2225571704857152/" target="_blank" rel="noopener noreferrer"><span class="source-id">M08</span><span>Manage your Muse data</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>训练默认设置、删除、遗忘、重置与导出。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M09" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/2124746764949121/" target="_blank" rel="noopener noreferrer"><span class="source-id">M09</span><span>Browsing the web</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>浏览器可见性、接管、凭证及数据控制。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M10" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/1126304576638594/" target="_blank" rel="noopener noreferrer"><span class="source-id">M10</span><span>Files and apps in your Mac</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>完整磁盘访问、本地应用分级、自动化及屏幕信息。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M11" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/2797651547267109/" target="_blank" rel="noopener noreferrer"><span class="source-id">M11</span><span>Skills</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>内置技能、音频、图像、文档及任务。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M12" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/1484325780075655/" target="_blank" rel="noopener noreferrer"><span class="source-id">M12</span><span>Reminders and scheduled tasks</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>一次性、地点与周期任务，查看、修改和取消。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M13" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/2074655449783957/" target="_blank" rel="noopener noreferrer"><span class="source-id">M13</span><span>Artifacts</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>文件类型、生成与修改、Library和外部分享。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M14" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/995796179982326/" target="_blank" rel="noopener noreferrer"><span class="source-id">M14</span><span>Personality and memories</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>人格、文件式记忆、上下文来源及导入。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M15" data-category="official"><div class="source-title"><a href="https://www.meta.com/help/artificial-intelligence/1331373868832401/" target="_blank" rel="noopener noreferrer"><span class="source-id">M15</span><span>Getting started</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>账户、对话、任务和入门边界。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>www.meta.com</span></div></article>
+<article class="source-item" id="source-M16" data-category="official"><div class="source-title"><a href="https://support.link.com/questions/what-s-covered-with-protections" target="_blank" rel="noopener noreferrer"><span class="source-id">M16</span><span>Link购买保护</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>合作方、资格、保障类型及限额；并非所有购买无条件覆盖。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>support.link.com</span></div></article>
+<article class="source-item" id="source-M17" data-category="official"><div class="source-title"><a href="https://stripe.com/blog/giving-agents-the-ability-to-pay" target="_blank" rel="noopener noreferrer"><span class="source-id">M17</span><span>Stripe Giving agents the ability to pay</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>spend request、一次性卡或SPT、逐笔审阅；不代表Muse已集成全部能力。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>stripe.com</span></div></article>
+<article class="source-item" id="source-M18" data-category="official"><div class="source-title"><a href="https://openai.com/zh-Hans-CN/chatgpt-work/" target="_blank" rel="noopener noreferrer"><span class="source-id">M18</span><span>OpenAI ChatGPT Work</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>当前工作流定位，跨工具及产物；旧Agent公告已提示过期，因此不用旧套餐或模型指标比较。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>openai.com</span></div></article>
+<article class="source-item" id="source-M19" data-category="official"><div class="source-title"><a href="https://claude.com/product/cowork" target="_blank" rel="noopener noreferrer"><span class="source-id">M19</span><span>Claude工作产品页</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>旧研究预览入口跳转后的现行页面；用于工作流定位比较，不作全面规格排名。</p><div class="source-meta"><span class="tag fact">官方 · 已读</span><span>claude.com</span></div></article>
+<article class="source-item" id="source-M20" data-category="media"><div class="source-title"><a href="https://runtimewire.com/article/meta-muse-ai-agent-transaction-fees-free-tokens" target="_blank" rel="noopener noreferrer"><span class="source-id">M20</span><span>RuntimeWire</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>已读；交易收费为采访转述，本次未独立核实完整原始采访或正式商业条款。</p><div class="source-meta"><span class="tag media">二手转述 · 已读</span><span>runtimewire.com</span></div></article>
+<article class="source-item" id="source-M21" data-category="unverified"><div class="source-title"><a href="https://www.reuters.com/business/meta-launches-ai-agent-that-can-access-other-apps-send-emails-make-payments-2026-09-08/" target="_blank" rel="noopener noreferrer"><span class="source-id">M21</span><span>Reuters线索</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>本次访问受限，未取得正文；不据此新增事故事实。</p><div class="source-meta"><span class="tag pending">未取得全文</span><span>www.reuters.com</span></div></article>
+<article class="source-item" id="source-M22" data-category="user"><div class="source-title"><a href="https://muse.ai/s/muse-exu64axy3vk9m" target="_blank" rel="noopener noreferrer"><span class="source-id">M22</span><span>用户提供的Muse调研页</span><svg width="12" height="12" aria-label="在新标签页打开"><use href="#external"/></svg></a></div><p>2026年9月22日快照；已读9个章节及6项风险折叠内容，作为线索而非最终事实依据。</p><div class="source-meta"><span class="tag ">二次调研 · 已读</span><span>muse.ai</span></div></article></div><p class="empty-state" id="source-empty" hidden>没有匹配的来源。请更换关键词或选择“全部”。</p><button class="source-more" id="source-more" type="button">查看全部 22 项来源</button><div class="local-materials"><h3>本地三份研究材料：用于形成国内支付启示</h3><p>以下原始材料仅用于形成研究启示，未随公开网页上传，不提供附件下载；它们不证明项目已经上线、合规链路已确认或经营效果已成立。</p><div class="local-files"><span>AI 支付调研与下一步做法.docx</span><span>ai-payment-thinking.pdf</span><span>ai-payment-ideas-review.pdf</span></div></div><div class="report-callout"><div><h3>需要完整论证？阅读原始报告。</h3><p>13 个章节、完整来源附录与核验说明，已内嵌于此网页。</p></div><div class="report-buttons"><button class="button primary" type="button" data-report>阅读全文<svg width="17" height="17" aria-hidden="true"><use href="#arrow"/></svg></button><button class="button" type="button" data-download>下载 Markdown<svg width="16" height="16" aria-hidden="true"><use href="#download"/></svg></button></div></div></section>
+    <footer class="footer"><div><strong>Muse · 产品调研与京东支付启示</strong>研究截止 2026年9月23日 · 公开资料案头研究，非登录实测<br>没有连接个人账户、执行购买、运行长期任务或测量成功率。</div><div>本报告不构成法律、投资或采购结论。<br><a href="#top">回到顶部</a></div></footer>
+  </main></div>
+  <button class="to-top" type="button" aria-label="回到顶部"><svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  <dialog class="report-dialog" id="report-dialog" aria-labelledby="report-dialog-title"><div class="dialog-shell"><header class="dialog-header"><div><h2 id="report-dialog-title">Muse 产品调研报告与京东支付启示 · 全文</h2><p>研究截止 2026.09.23 · 与原始 Markdown 内容一致</p></div><button class="dialog-close" type="button" aria-label="关闭完整报告"><svg width="21" height="21" aria-hidden="true"><use href="#close"/></svg></button></header><article class="report-content" id="report-content"><h1>Muse产品调研报告与京东支付启示</h1>
+<p>调研截止日期：2026年9月23日</p>
+<p>研究对象：Meta的个人AI Agent产品Muse。面向产品、支付、技术和风控团队，回答它是什么、如何工作、如何收费、哪些能力已被公开说明，以及哪些机制值得借鉴。</p>
+<p>本报告以用户提供的Muse调研页为起点，补充读取Meta官方产品公告、设计与安全说明、帮助中心，以及Stripe、Link和竞品官方资料。国内支付启示结合本地三份研究文件形成，但不将内部能力假设写成既有事实。</p>
+<p><strong>方法边界：这是公开资料案头研究，不是登录账户后的产品实测。</strong> 本次没有连接个人账户、提交购买、运行长期任务或测量成功率。官方描述证明产品公开宣称的机制，不证明其在所有场景下有效；商业判断、竞争判断和行动建议另行标明。正文中的〔M编号〕对应文末来源。</p>
+<h2>一 执行摘要</h2>
+<h3>核心判断</h3>
+<p><strong>Muse值得研究的，不是又增加了一个能聊天的入口，而是把个人上下文、持续任务、工具执行、权限审批和交易放进了同一套使用流程。</strong> 用户交付一个目标，Agent持续推进，敏感动作交回用户确认，并保留可检查的工作记录。这是本报告对其产品结构的概括，不是对任务可靠性的实测结论。〔分析；M01—M03〕</p>
+<p>对京东支付更直接的启示是：<strong>Agent可以负责寻找和准备交易，支付系统应负责判断是否有权执行、约束执行范围，并把结果和异常处理闭环。</strong> 不必先复制一个Muse，也不必照搬海外虚拟卡形态。〔启示；M06、M17；本地支付材料〕</p>
+<h3>六项结论</h3>
+<ol>
+<li><strong>产品形态已超出一次性问答。</strong> 主对话、侧对话、跨会话记忆、Goals、定时任务和Artifacts共同承载长期协作；这些能力可以从官方说明获得支持。〔M02、M12—M15〕</li>
+<li><strong>工具覆盖与权限控制是两件事。</strong> 内置连接器、自定义连接器、浏览器和Mac本地访问扩大可操作范围，但每一种接入也带来不同权限与数据风险。〔M05、M09、M10〕</li>
+<li><strong>重要创新在执行系统，不只在模型。</strong> 官方将主Agent、安全服务、凭证保管、连接器执行和网络权限分开，假设Agent可能受攻击，再限制损害。〔M03〕</li>
+<li><strong>购买仍然逐笔确认。</strong> 截至本次读取，Muse支付帮助页明确每次购买前请求批准。通用权限里的“始终允许”不能解释成已经支持无限制自主付款。〔M06、M07〕</li>
+<li><strong>订阅已明确，交易抽成仍是方向。</strong> 官方列出免费限额、20美元/月和100美元/月方案；未来交易分成来自媒体对高管采访的转述，本次没有取得正式费率或商户合同。〔M04、M20〕</li>
+<li><strong>长期优势和长期风险来自同一处。</strong> 更深的上下文和持续代办可能提高价值，也会增加权限暴露、错误影响与切换成本；这些尚不能由发布时的功能列表证明。〔分析；M03、M08、M14〕</li>
+</ol>
+<h3>相比原调研页的重要更新</h3>
+<p>本次已补到官方资料，确认了原先仅作单源参考的Mac本地操作、自定义连接器、Goals与Artifacts等机制，并读到订阅价格正文。同时补充了原材料容易遗漏的边界：同一Accounts Center中的部分Meta账户会自动连接；断开连接不自动删除已经形成的记忆；现有Secure VM并不从技术上排除Meta访问；支付不只有Link，还可使用商户账户中的已保存银行卡。〔M02—M06、M08、M10〕</p>
+<h2>二 产品概况与成熟度</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>核实到的情况</th>
+<th>解读边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>产品定位</td>
+<td>个人AI Agent，可按用户方向执行任务并连接应用服务</td>
+<td>不等于全能代理或结果担保〔M01、M15〕</td>
+</tr>
+<tr>
+<td>发布</td>
+<td>Meta公告日期为2026年9月8日</td>
+<td>公告日期不等于所有账户同时开放〔M01〕</td>
+</tr>
+<tr>
+<td>客户端</td>
+<td>发布公告列出iOS、Android、网页及WhatsApp交互；本次帮助中心另有Mac使用说明</td>
+<td>当前地区与账户可用性需以实际页面为准〔M01、M10〕</td>
+</tr>
+<tr>
+<td>账户</td>
+<td>使用Meta账户，可以通过已有Facebook、Instagram账户或邮箱、手机号创建</td>
+<td>不将原材料“免费也必须绑卡”当作已核验事实〔M15〕</td>
+</tr>
+<tr>
+<td>运行方式</td>
+<td>专属云端环境，支持浏览器、文件与终端；Mac端可获授权访问本机</td>
+<td>云端运行不等于所有推理和数据都不出虚拟机〔M02、M03、M10〕</td>
+</tr>
+<tr>
+<td>可用阶段</td>
+<td>订阅帮助页仍写有限测试、并非所有地区开放</td>
+<td>不给出未核实的全球覆盖清单〔M04〕</td>
+</tr>
+<tr>
+<td>年龄</td>
+<td>订阅要求18岁或所在国家的法定成年年龄</td>
+<td>这是订阅资格原文，不扩写所有入口的统一注册规则〔M04〕</td>
+</tr>
+<tr>
+<td>未确认经营数据</td>
+<td>本次没有取得真实活跃、留存、付费、交易量或任务成功率数据</td>
+<td>不以预测或券商估算替代经营事实</td>
+</tr>
+</tbody></table></div>
+<h3>时间线应如何阅读</h3>
+<ul>
+<li><strong>2026年9月8日：</strong> Meta发布Muse公告，并通过公告链接提供设计与安全说明。〔M01—M03〕</li>
+<li><strong>2026年9月22日：</strong> 用户提供的原始分享页形成资料快照，部分能力标为单源或待核。〔M22〕</li>
+<li><strong>2026年9月23日：</strong> 本报告读取官方帮助中心，补核价格、Mac、支付、连接器、记忆等。帮助页只显示相对更新时间的，不据此推定准确功能上线日期。</li>
+<li><strong>未来项：</strong> 在本次读到的发布和安全材料中，Shop Pay、1Password、AI眼镜和Confidential VM仍以计划表述出现；本次没有取得足够证据证明它们已全面开放。〔M01、M03〕</li>
+</ul>
+<h2>三 它解决什么用户问题</h2>
+<h3>1 从搜索答案转向推进事务</h3>
+<p>官方案例包括整理家庭开学事项、汇总邮件与日历、寻找商品、安排出行、制作文件和追踪目标。共同点不是某个功能，而是信息散落在多个地方，任务横跨多步骤，用户需要反复切换和跟进。〔M01、M02〕</p>
+<p>本报告将其待验证价值概括为：<strong>把“我需要一直记着并推动”变成“我设定目标、提供权限、处理关键决定”。</strong> 节省的应是整个任务的处理和监督成本，而不仅是输入提示词的时间。〔分析〕</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>任务类型</th>
+<th>Muse承接的工作</th>
+<th>必须保留的人类控制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>个人事务与日程</td>
+<td>阅读相关信息、提取截止时间、准备安排与提醒</td>
+<td>授权访问范围，确认发送或修改〔M02、M07〕</td>
+</tr>
+<tr>
+<td>购物与预订</td>
+<td>查找、比较、填写订单、准备结账</td>
+<td>核对商户条款和订单，每次购买前批准〔M06、M09〕</td>
+</tr>
+<tr>
+<td>研究与产物</td>
+<td>阅读文件，生成文档、表格、图像或交互页面</td>
+<td>检查事实、格式和分享对象〔M11、M13〕</td>
+</tr>
+<tr>
+<td>长期目标</td>
+<td>拆解计划、调度任务、跟进变化、提出建议</td>
+<td>定期确认目标仍有效，调整或停止任务〔M02、M12〕</td>
+</tr>
+</tbody></table></div>
+<h3>2 哪些用户更可能感到价值</h3>
+<p>以下是基于任务结构的用户假设，不是Meta公开的用户分群数据：</p>
+<ul>
+<li>日程、家庭或个人事务分散在多个服务中的用户，可能更需要跨来源协调。</li>
+<li>有反复研究、制作文件、跟进事项需求的个人工作者，可能更容易形成持续使用。</li>
+<li>经常比较和预订标准化商品服务的用户，可能更容易衡量省时价值。</li>
+</ul>
+<p>相反，简单搜索、极低频任务、对交出账户权限高度敏感的用户，未必能从复杂代理流程中得到净收益。应把任务收益、授权意愿和监督成本一起研究，不能只用“用户喜欢AI”判断需求。〔分析〕</p>
+<h2>四 产品结构与用户旅程</h2>
+<h3>1 一个长期协作空间</h3>
+<p><strong>主对话与侧对话。</strong> 用户不必等待上一条回应才能继续分派任务。侧对话用于组织主题，但官方入门说明表示Muse仍会在主对话与侧对话间保持上下文感知，因此侧对话不是已承诺的严格数据隔离空间。〔M15〕</p>
+<p><strong>记忆与人格。</strong> 名称、头像、语气和沟通偏好可定制；记忆包括直接提供的信息、交互模式和连接器上下文，并支持文件式查看或编辑。帮助页还描述了从其他助手导入历史对话的方式。价值在减少重复解释，但记忆错误也可能长期影响动作。〔M14；后一句为分析〕</p>
+<p><strong>Goals与Ideas。</strong> Goals承载长期任务及计划；Ideas用于提示用户可以交给Muse做什么。官方设计说明指出，早期测试中用户“不知道从哪开始”是问题之一。Ideas既是能力发现入口，也是一种引导首次成功的设计，而非已验证的增长效果。〔M02〕</p>
+<p><strong>Activity与Upcoming。</strong> 前者提供活动与授权记录，后者显示即将执行的提醒及任务。它们把“后台还在做事”变成可检查对象，是信任界面而不只是状态装饰。〔M07、M12；后一句为分析〕</p>
+<p><strong>Artifacts与Library。</strong> 输出不局限于聊天文本，可处理PDF、DOCX、Markdown、XLSX、CSV、图片、代码及交互网页；文件可在Library保存和后续修改。外部分享需要用户开启或批准。〔M13〕</p>
+<h3>2 从首次使用到持续使用</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>用户与系统行为</th>
+<th>应观察的体验问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开始</td>
+<td>建立账户，提出第一个任务，设置必要偏好</td>
+<td>能否快速完成一件真实有用的事？</td>
+</tr>
+<tr>
+<td>连接</td>
+<td>按需接入服务、登录网站或启用本机能力</td>
+<td>用户是否知道交出了什么权限？</td>
+</tr>
+<tr>
+<td>执行</td>
+<td>Agent调用工具，后台推进并显示活动</td>
+<td>能否看懂进度，而不是被过程刷屏？</td>
+</tr>
+<tr>
+<td>批准</td>
+<td>系统展示具体动作及允许或拒绝选项</td>
+<td>审批内容是否足够明确，是否产生机械点击？</td>
+</tr>
+<tr>
+<td>交付</td>
+<td>返回文件、结果、订单或提醒</td>
+<td>是否正确完成，而非只显示“任务完成”？</td>
+</tr>
+<tr>
+<td>持续</td>
+<td>更新计划、记忆和定时任务</td>
+<td>是否值得继续授权，能否方便调整、撤销和退出？</td>
+</tr>
+</tbody></table></div>
+<p>该旅程由官方使用说明整理；右栏是本报告提出的研究问题，不是已测得的体验表现。〔M02、M07、M12—M15〕</p>
+<h3>3 提醒不等于完整自动化</h3>
+<p>帮助页确认一次性、地点提醒及周期任务，支持查看、修改和取消，并按用户时区处理时间。但提醒成功送达，不能证明其背后的跨站检查、复杂执行或长期监控都可靠。应该分别测量调度触发、任务执行、结果正确和通知到达，而不是合并成一个“提醒功能已可用”。〔M12；测量建议〕</p>
+<h2>五 执行与安全架构</h2>
+<h3>1 关键不是允许Agent做什么 而是谁最终批准</h3>
+<p>官方安全说明的核心思想是：<strong>假设主Agent可能误判或受到提示词注入，不能让它同时掌握任务执行与权限裁决。</strong> 主Agent在受限运行环境中工作；凭证保管、安全检测、内置连接器执行和Sentinel权限服务放在分离的安全域。〔M03〕</p>
+<p>概念链路可以表述为：</p>
+<p>用户目标 → Muse规划与工具请求 → 独立权限裁决 → 必要时结构化批准 → 受控工具或网络执行 → 活动记录与结果。</p>
+<p>这里的“独立”指架构上的隔离，不代表控制完全不使用模型，也不代表不存在共同失效或漏判。官方自身明确提示Muse仍可能出错，提示词注入尚未被彻底解决。〔M03〕</p>
+<h3>2 三个值得理解的机制</h3>
+<ul>
+<li><strong>权限与凭证分离。</strong> 主Agent提出动作，Sentinel负责允许、拒绝或询问用户；凭证由另一服务保管。模型没有必要知道真实密码和API密钥。〔M03〕</li>
+<li><strong>执行时才注入秘密。</strong> 官方描述用替代标识参与调用，在具体请求获准后才于可信边界注入真实凭证。它减少模型直接暴露秘密的机会，但不自动阻止所有“使用合法权限做坏事”的风险。〔M03；后半句为分析〕</li>
+<li><strong>批准绑定实际范围。</strong> 批准通过独立界面回到权限服务，而非仅在聊天里回复“可以”。通用动作可以有单次、任务或站点等范围，用户还能管理已批准项。〔M03、M07〕</li>
+</ul>
+<p>不应把这套机制简化为“再增加一个安全Agent就够了”。真正需要验证的是控制是否处于不可绕过的执行路径，确认界面是否绑定准确对象，以及上下文变化后旧批准是否仍被错误复用。〔分析〕</p>
+<h3>3 浏览器并非不受限制的自动点击器</h3>
+<p>官方提供可观察、可接管和可停止的浏览器流程；密码进入安全凭证存储，而非交给模型读取。安全说明还描述了隔离的浏览器控制接口。该设计降低部分凭证暴露路径，但并不证明所有站点都可稳定自动操作。〔M03、M09〕</p>
+<p>网站变化、登录失效、验证码、订单参数变化和任务中断应作为独立验收项。这里是测试建议，不是对Muse实际故障率的断言。〔分析〕</p>
+<h2>六 连接器与Mac扩展</h2>
+<h3>1 三种连接方式带来不同信任成本</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>已核实机制</th>
+<th>风险和边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内置连接器</td>
+<td>官方与服务商对接；可按服务授权，部分支持只读及变更通知</td>
+<td>第三方仍按自身条款处理收到的信息〔M05〕</td>
+</tr>
+<tr>
+<td>自定义连接器</td>
+<td>可让Muse为列表外服务创建连接，可能需要API信息</td>
+<td>Meta明确不审核其行为和信息使用，不能视同内置连接器〔M05〕</td>
+</tr>
+<tr>
+<td>浏览器</td>
+<td>通过网站界面搜索、填写表单、购买；用户可接管</td>
+<td>能登录不等于允许所有动作；购买仍需批准〔M06、M09〕</td>
+</tr>
+</tbody></table></div>
+<p>原调研页列出的Spotify、Plaid、Ticketmaster、OpenTable、Peloton等，不在本报告中扩写为已复核的完整目录。官方帮助页可以确认Gmail示例、Google Workspace相关规则、Apple Health及Android SMS的设备权限说明，以及Meta产品连接机制。具体列表应以账户内可用连接器为准。〔M05、M22〕</p>
+<h3>2 两个容易忽略的连接边界</h3>
+<p><strong>Meta账户连接并非全部逐项手工开启。</strong> 连接器帮助页写明，当账户位于同一Accounts Center时，Facebook、Instagram和Threads会自动连接。这个机制与笼统的“每个服务都要另外授权一次”不同，产品研究应关注用户是否知道账户关联会带来什么上下文。〔M05；后句为分析〕</p>
+<p><strong>断开连接不等于清空数据。</strong> 断开后停止后续交换，但此前进入记忆或对话的信息可能保留，需要另行管理。停止访问、遗忘主题、删除文件、退出训练和重置账户是不同控制，不应只提供一个含糊的“撤销授权”入口。〔M05、M08；后句为启示〕</p>
+<h3>3 Mac能力已获得官方支持 但不等于细粒度系统权限</h3>
+<p>本次官方帮助页确认：Mac应用可查找、整理和管理文件，读取iMessage、Notes、Reminders、Email、Calendar等本地信息，并可在授权后执行部分应用动作。其依赖macOS的完整磁盘访问、自动化和通知权限。〔M10〕</p>
+<p>帮助页提供按本地应用关闭、只读、读写交互等选项，并说明删除文件会进入废纸篓。但完整磁盘访问在操作系统层面的范围很广，不能因为产品承诺仅处理指定文件，就把它理解为系统权限天然只覆盖那几份文件。官方也提醒用户监督异常行为。〔M10〕</p>
+<p>因此，本报告将Mac能力从原调研的“单源报道”提升为“官方已描述”；仍不声称已经完成实际安装、性能或权限隔离测试。</p>
+<h2>七 支付机制与责任边界</h2>
+<h3>1 Muse有两类已公开说明的付款路径</h3>
+<p><strong>路径A 使用Link。</strong> Muse准备购买信息，用户批准后使用Link提供的一次性卡完成结账。Meta的说明把凭证与特定商户、金额及时效关联，并将购买保护限定在符合条件的交易。〔M03、M06〕</p>
+<p><strong>路径B 使用商户账户已保存的银行卡。</strong> Muse可以通过安全凭证存储登录商户账户，再使用已保存的银行卡付款；同样需要购买前批准。支付能力还受地区、商户和结账流程影响。〔M06〕</p>
+<p>这意味着不能写成“所有Muse购买均走Link”“所有商户都只看到一次性卡”或“所有订单都享受同等购买保护”。两条路径的资金凭证、受理和售后保障条件需要分别看待。</p>
+<h3>2 三种授权不能混为一谈</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>授权层次</th>
+<th>它解决的问题</th>
+<th>不代表什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>连接授权</td>
+<td>Muse能否读取某服务或登录某账户</td>
+<td>不代表可以任意修改或购物</td>
+</tr>
+<tr>
+<td>动作批准</td>
+<td>某类操作在单次、任务或站点范围内是否允许</td>
+<td>不代表所有敏感动作都免确认</td>
+</tr>
+<tr>
+<td>购买确认</td>
+<td>这笔具体订单是否可以完成</td>
+<td>不保证订单正确、履约成功或退款成立</td>
+</tr>
+</tbody></table></div>
+<p>官方通用审批文档支持多种授权范围，但支付文档明确“每次购买前批准”。涉及支付时应使用更具体的产品说明，不用通用“Always allow”推导出自主支付能力。〔M06、M07〕</p>
+<p>Stripe的Link钱包说明则进一步提供一个技术参照：Agent可发起spend request，经本人审阅后取得一次性卡或Shared Payment Token；原始凭证不交给Agent。本次读到的该页面同样把免额外批准的扩展控制描述为未来计划。<strong>这是Link通用能力说明，不等于Muse已经开放SPT、ACP或全部接口。</strong>〔M17〕</p>
+<h3>3 购买保护不是平台对任务结果兜底</h3>
+<p>Link支持页说明其与XCover合作，为符合条件的商品提供损坏、丢失、失窃、退货、价格及退款相关保障，各项有资格与限额。没有必要把这些保障扩写为“AI买错也无条件赔付”。〔M16〕</p>
+<p>Meta支付帮助页写明订单由购买的商户履约，要求用户核验交易、商户条款与收据，并对代其进行的交易负责。这里是产品提示的转述，不是本报告对任何具体纠纷法律责任的判断。〔M06〕</p>
+<p>对支付团队而言，至少应分开设计：<strong>权限是否充分、资金是否执行、商品是否正确、商户是否履约、争议如何处理。</strong> 这五个问题没有一个能只靠“扣款成功”回答。〔启示〕</p>
+<h2>八 商业模式与经济性</h2>
+<h3>1 当前已核实的订阅方案</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>帮助页显示价格</th>
+<th>每周额度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>免费</td>
+<td>免费，有限使用量</td>
+<td>官方该页未给出具体token数</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>20美元每月</td>
+<td>5亿Muse tokens</td>
+</tr>
+<tr>
+<td>Maximum</td>
+<td>100美元每月</td>
+<td>30亿Muse tokens</td>
+</tr>
+</tbody></table></div>
+<p>价格和额度在2026年9月23日从官方页面读到；具体权益与可用性可能因地区、账户变化，应以订阅前展示为准。订阅每月自动续费，可取消或管理付款方式。〔M04〕</p>
+<p><strong>不要把免费每周1亿tokens写成该帮助页已确认。</strong> 该数值见于原调研及媒体报道，本次官方订阅页仅写有使用上限。此外，官方页面强调升级带来更多额度，不足以证明所有地区、账户和客户端功能完全相同。〔M04、M20、M22〕</p>
+<p>Token不是任务数。复杂任务、重试、访问网站和产物制作的消耗不同，用户真正购买的价值应以正确完成任务与节省时间衡量。本次没有取得每任务消耗、服务成本或毛利数据，因此不计算“可做多少次任务”或“订阅必然盈利”。〔分析〕</p>
+<h3>2 交易抽成是待落地的战略选项</h3>
+<p>RuntimeWire转述2026年9月8日采访，称Zuckerberg讨论过对Muse促成的购物、节省或创造收益收取小比例费用，并可能由参与交易的企业付费。文章没有给出正式费率、上线时间、适用交易及商户条款。〔媒体转述；M20〕</p>
+<p>本次另读到的CryptoBriefing文章主要是订阅与券商收入假设，不能单凭其标题把它用作“交易抽成已成立”的证据。原分享页对商业终局的表述，应收敛为<strong>可能探索，而非确定终局，更不是现有收入事实</strong>。〔M22；本次来源复核〕</p>
+<h3>3 经济模型的四项待证条件</h3>
+<ul>
+<li><strong>需求持续：</strong> 用户不是只试一次，而是有稳定任务需要交付。</li>
+<li><strong>单位经济可行：</strong> 订阅或未来交易收入足以覆盖推理、虚拟机、重试、客服与风险成本。</li>
+<li><strong>商户愿意支付：</strong> Muse带来可归因增量或可衡量效率，而非只是替代原有流量路径。</li>
+<li><strong>推荐值得信任：</strong> 商户付费不能在不透明的情况下扭曲用户的选购结果。</li>
+</ul>
+<p>以上是本报告的商业评估框架。当前资料不足以验证任何一项已经达标。尤其当交易失败、退款、归因跨平台或商户未建立合作关系时，收费如何成立仍是开放问题。</p>
+<h2>九 竞争位置与可能的优势</h2>
+<h3>1 比较应看产品重心 而非固定功能清单</h3>
+<p>本次发现，OpenAI的2025年ChatGPT Agent发布页已提示内容过期，并指向现行工作产品；Claude旧Cowork入口也转向当前产品页。因此不沿用原分享页中“某竞品仅本地桌面”“只能从某价格档开始”等过期风险较高的对比。〔M18、M19〕</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>对比对象</th>
+<th>本次官方材料体现的重点</th>
+<th>对Muse的研究意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Muse</td>
+<td>个人上下文、生活事务、长期任务、可观察执行和Link购买</td>
+<td>观察是否能形成持续的个人委托关系〔M01、M02、M06〕</td>
+</tr>
+<tr>
+<td>ChatGPT Work</td>
+<td>跨工具、文件及桌面流程，把上下文转成文档、表格、演示和交互产物</td>
+<td>工作交付与持续任务并非Muse独有〔M18〕</td>
+</tr>
+<tr>
+<td>Claude现行工作产品</td>
+<td>跨文件和工具执行、计划与监督、浏览器、后台和并行工作</td>
+<td>“能操作电脑”本身不足以构成持久差异〔M19〕</td>
+</tr>
+</tbody></table></div>
+<p>这只是定位比较，不是全面能力、价格或性能排名；未对三个产品执行同一组任务，也未验证各账户的实际可用性。</p>
+<h3>2 Muse可能形成优势的地方</h3>
+<p><strong>分发与上下文组合。</strong> WhatsApp交互和Meta账户关联可能降低入口切换成本，并带入关系与兴趣上下文；是否真正提高留存与任务成功，需要数据而非生态规模推导。〔分析；M01、M05〕</p>
+<p><strong>持续记忆与任务习惯。</strong> 长期偏好、文件和任务可能提高复用价值，也可能提高迁移成本。官方提供记忆导入和数据导出说明，意味着不能把用户锁定描绘为不可避免。〔分析；M08、M14〕</p>
+<p><strong>可信执行与支付组合。</strong> 权限界面、凭证隔离、购买确认及符合条件的保护，可能让用户更愿意从“问它”走到“交给它做”。这是一项可验证的转化假设，不是现成的竞争壁垒。〔分析；M03、M06、M16〕</p>
+<h3>3 不应夸大的地方</h3>
+<p>本报告不使用“全球首个”“唯一安全”“全面领先”等未经独立比较支持的结论。浏览器、工具、记忆、子Agent、定时任务和产物都需要比较质量、成本与控制，而不是仅比较是否存在。最终竞争更可能体现为正确完成率、用户监督成本、可恢复性和持续使用。〔分析〕</p>
+<h2>十 隐私 风险与证据边界</h2>
+<h3>1 现有Secure VM不是平台不可见模式</h3>
+<p>官方安全说明明确，现有架构通过隔离与运营政策限制访问，但不从技术上阻止Meta在支持、安全或运营需要时访问。Confidential VM旨在提供更强的密码学隔离，在所读材料中仍是未来计划。〔M03〕</p>
+<p>因此，“凭证不进入主模型”“不同用户环境隔离”“Meta无法读取用户数据”是三个不同命题，不能互相替代。</p>
+<h3>2 训练和广告需要分别理解</h3>
+<p><strong>训练设置。</strong> 数据帮助页说明改善模型的设置初始为开启，用户可以关闭；关闭后的政策选择也适用于此前交互。官方描述会移除部分个人标识并与账户脱关联，但这不等于所有敏感商业语义必然消失，也不等于已训练模型可被逐条逆向删除。〔M08；后半句为限制解释〕</p>
+<p><strong>广告关系。</strong> 官方说不把Muse对话与虚拟机数据共享给Meta广告系统；安全说明同时指出，Muse代表用户访问商户或完成站内操作，仍可能间接影响其看到的广告。不能将前一句扩写为“任何行为都不影响广告”。〔M03〕</p>
+<p><strong>Mac与第三方。</strong> Mac帮助页将执行中使用的应用信息和屏幕截图也纳入交互信息说明。连接器和网站仍有自己的隐私条款，用户在Muse中的控制不能自动约束所有接收方。〔M05、M10〕</p>
+<h3>3 主要风险与验证问题</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>风险</th>
+<th>为什么重要</th>
+<th>应验证什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>提示词注入</td>
+<td>私有信息、外部不可信内容和可执行动作相遇</td>
+<td>能否阻止无关数据外传和未经批准的动作？</td>
+</tr>
+<tr>
+<td>权限误解</td>
+<td>只读、任务批准、站点批准和购买批准容易被混同</td>
+<td>用户能否复述权限，旧批准是否被错误扩展？</td>
+</tr>
+<tr>
+<td>审批疲劳</td>
+<td>过度打断可能导致用户直接点击通过</td>
+<td>需要人工判断的内容是否清晰且足够少？</td>
+</tr>
+<tr>
+<td>长期任务漂移</td>
+<td>目标、价格、地址和账户状态可能变化</td>
+<td>是否重新确认，能否发现静默停止和错误重复？</td>
+</tr>
+<tr>
+<td>本机广泛访问</td>
+<td>系统权限大于用户当下任务范围</td>
+<td>是否超范围读写，撤销后是否停止访问？</td>
+</tr>
+<tr>
+<td>交易与恢复</td>
+<td>付款成功不代表任务或履约成功</td>
+<td>回执、退款、取消、争议各由谁处理？</td>
+</tr>
+</tbody></table></div>
+<p>风险框架来自官方风险提示和本报告分析，并非已发现的Muse漏洞清单。〔M03、M06—M10〕</p>
+<h3>4 未被证明的内容</h3>
+<ul>
+<li>没有取得生产环境的任务完成率、提示词注入防护通过率、长周期稳定性及严重事故率。</li>
+<li>没有取得真实付费用户数、订阅留存、Agent促成交易量及收入结构。</li>
+<li>原分享页提及的Reuters内部测试事件，本次直接访问受限，未核实原文，不将具体事故、延期原因写成独立确认事实。〔M21、M22〕</li>
+<li>Feed完整来源与排序、加拿大覆盖及当地定价、Muse模型家族与产品内功能的一一映射，未完成充分核验。官方支持图像或音频技能，不等于证明完整语音助手或某一模型产品已全面整合。〔M11、M22〕</li>
+</ul>
+<h2>十一 对京东支付和Agent产品的启示</h2>
+<h3>启示一 抢占交易执行接口 不必先争夺通用入口</h3>
+<p><strong>观察：</strong> Muse准备任务和订单，Link及商户既有支付关系承接资金动作。〔M06、M17〕</p>
+<p><strong>建议：</strong> 京东支付优先为内部或合作Agent提供标准请求、授权校验、执行、查询、退款和证据接口。先确认谁愿意持续调用，而不是先搭建一个新的聊天入口。</p>
+<p><strong>不能照搬：</strong> 海外一次性卡受发卡与受理网络条件影响，国内应先核验可用资金路径、资质、渠道协议和责任，不把产品名称或凭证形态当作答案。</p>
+<h3>启示二 授权应是可管理的对象</h3>
+<p><strong>观察：</strong> Muse把权限设置、具体批准和活动记录做成显式界面，而不只依赖聊天记录。〔M07〕</p>
+<p><strong>建议：</strong> 至少让用户看见授权给谁、为哪个任务、允许哪些对象、额度、频率、有效期及如何撤销。支付层保存可关联的授权版本和单笔请求。</p>
+<p><strong>验证：</strong> 用户能否正确解释边界？参数变化是否要求重新决策？撤销未来授权是否与取消在途交易、已付退款明确区分？</p>
+<h3>启示三 把权限校验放到不可绕过的执行路径</h3>
+<p><strong>观察：</strong> 主Agent不能自己批准工具和网络动作，真实凭证也不由主模型直接保管。〔M03〕</p>
+<p><strong>建议：</strong> 让Agent提出支付请求，可信支付域负责规则、风控、凭证和执行。模型可抽取信息或解释原因，但不能自行增大额度、改授权或把“用户说过可以”当作充分依据。</p>
+<p><strong>不能照搬：</strong> 部署另一个模型来审查，不等于已有确定性支付控制；是否可绕过、幂等、防重放和最终资金状态都需要单独验证。</p>
+<h3>启示四 从逐笔确认逐步验证授权自动化</h3>
+<p><strong>观察：</strong> Muse已经可在后台推进任务，但其购买流程仍逐笔确认。〔M06、M12〕</p>
+<p><strong>建议：</strong> 首期可以自动完成查找、比价、请求准备和证据收集，再让用户确认付款；有了真实理解与风险数据后，才评估低额、短时、明确对象的规则内自动执行。</p>
+<p><strong>验证：</strong> 自动化是否真的减少总处理时间？用户确认数量下降时，错误、撤回和争议有没有上升？不把“免打扰率越高越好”作为单一目标。</p>
+<h3>启示五 把售后恢复与扣款同批交付</h3>
+<p><strong>观察：</strong> Link保护有条件，Meta并不替所有商户履约，也没有承诺所有任务失败由平台兜底。〔M06、M16〕</p>
+<p><strong>建议：</strong> 首期即打通明确回执、主动查询、未知状态核查、退款、对账、投诉与证据。客服应能还原谁批准了什么，而不是被要求阅读一大段模型对话。</p>
+<p><strong>验证：</strong> 超时会不会造成重复付款？退款和撤销是否有确定状态？支付、Agent和商户是否对同一订单使用一致标识？</p>
+<h3>启示六 用真实工作任务建立长期价值</h3>
+<p><strong>观察：</strong> Muse的持续使用结构包括Goals、记忆、周期任务和可修改产物，支付只是其中一个环节。〔M02、M12—M14〕</p>
+<p><strong>建议：</strong> 对京东生态优先评估标准复购、订阅治理、企业低额采购等能复用已有关系的场景。B端有预算、审批和审计优势，也有财务与采购系统协同成本，不能预设必然更快落地。</p>
+<p><strong>验证：</strong> 真实业务方能否持续发起任务？采购或运营流程的总耗时、人工成本和差错是否下降？不是只统计演示付款次数。</p>
+<h3>启示七 商业化先问谁受益 再决定谁付费</h3>
+<p><strong>观察：</strong> Muse目前有订阅，交易收费尚未形成公开可验证的完整机制。〔M04、M20〕</p>
+<p><strong>建议：</strong> 分别验证Agent接入方、商户、企业客户和最终用户获得什么增量价值，再讨论执行服务、授权风控、费用控制或交易分成。模型能力市场更应等到真实任务和付费需求出现。</p>
+<p><strong>边界：</strong> 以上为结合本地支付材料的建议，不证明京东现有系统已具备这些能力。CloudTip与ClawTip的名称关系、A2P2状态、渠道适用性和责任安排仍需内部底稿确认。</p>
+<h2>十二 下一步如何验证这些启示</h2>
+<h3>1 建议采用小场景而非大平台立项</h3>
+<p>选定一个已有调用方、可用资金路径、明确商户和退款规则的场景。优先看能否得到真实对照数据，而非场景名称是否前沿。若涉及真实账户、资金或个人信息，应先完成内部授权和风险评审。以下为建议计划，并未实际执行。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>工作</th>
+<th>阶段证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第1至2周</td>
+<td>盘点现有能力，访谈首个调用方，确认一个场景和责任</td>
+<td>不是需求口号，而是可重复任务及当前成本</td>
+</tr>
+<tr>
+<td>第3至4周</td>
+<td>做授权、确认、撤销和结果界面；形成异常案例</td>
+<td>用户理解边界，团队能解释每笔为何允许或拒绝</td>
+</tr>
+<tr>
+<td>第31至60天</td>
+<td>沙箱或批准的内部试点，接入执行、查询、退款与审计</td>
+<td>端到端无未解释断点；非支付团队可独立接入</td>
+</tr>
+<tr>
+<td>第61至90天</td>
+<td>条件满足后小流量验证，比较原流程和新流程</td>
+<td>正确完成、风险、恢复与成本支持继续或停止</td>
+</tr>
+</tbody></table></div>
+<p>真实资金和自动支付阶段取决于前置条件，不因日历走到某一天就自动放开。</p>
+<h3>2 四项核心假设与实验</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>假设</th>
+<th>最小验证方式</th>
+<th>不成立时如何处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户愿意委托</td>
+<td>用具体任务测试授权理解、接受和撤回原因</td>
+<td>缩小权限或回到逐笔确认，而非只改文案</td>
+</tr>
+<tr>
+<td>执行比原流程更有价值</td>
+<td>对同类任务记录总耗时、人工介入和正确结果</td>
+<td>优化场景或停止自动化，不以交易额掩盖成本</td>
+</tr>
+<tr>
+<td>控制与恢复可用</td>
+<td>演练越权、重复请求、超时、撤销及退款异常</td>
+<td>不进入扩量；先消除资金和权限断点</td>
+</tr>
+<tr>
+<td>接入和收费有需求</td>
+<td>让非支付团队独立接入，并访谈受益方</td>
+<td>简化接口、调整收费对象或暂停平台化</td>
+</tr>
+</tbody></table></div>
+<p>建议将同一测试集用于后续Muse、内部Agent或合作产品的比较，但必须单独取得账户和测试授权。本报告不虚构已完成的对比结果。</p>
+<h3>3 指标不能只看使用量</h3>
+<ul>
+<li><strong>任务质量：</strong> 正确完成率，而非只看工具调用成功或支付成功。</li>
+<li><strong>用户控制：</strong> 授权理解正确率、追加确认、撤销原因与越界事件。</li>
+<li><strong>运行可靠性：</strong> 调度是否触发、未知状态多久查清、重复动作与失败恢复。</li>
+<li><strong>效率价值：</strong> 总处理时间、人工介入和每个正确完成任务的全成本。</li>
+<li><strong>持续需求：</strong> 首次新鲜感之后，是否仍有主动复用和业务调用。</li>
+<li><strong>商业证据：</strong> 受益方实际接受的合作或付费条件，而非口头“感兴趣”。</li>
+</ul>
+<p>目前没有足够资料设定统一数值目标，应先建立基线，并事先约定风险阈值与停止条件。小样本零事故不等于真实风险为零。</p>
+<h2>十三 总结</h2>
+<p>Muse展示了一种更完整的个人Agent产品结构：<strong>让用户交付目标，由系统持续推进，把关键权限和不可逆决定放在可检查的控制流程中。</strong> 它的研究价值既在于能做什么，也在于明确哪些事不能由主Agent自行决定。</p>
+<p>对京东支付，优先级不是“做中国版Muse”或“重新包装Token”，而是把已有基础能力组织成Agent可接入的授权、执行和恢复服务。先用一个真实场景证明用户理解、权限控制、资金结果和售后闭环，再扩展场景、互操作与商业化。〔综合判断；官方资料与本地支付材料〕</p>
+<p><strong>最需要补证的仍是三件事：谁会长期委托，系统能多可靠地完成，以及整个过程是否真的比原来更省成本。</strong> 功能清单、模型能力和平台愿景都不能替代这三类证据。</p>
+<h2>附录 资料来源与核验说明</h2>
+<p>所有下列“已读”资料均在2026年9月23日直接取得正文；日期标为发布日的除外。官方资料以M01—M19为主，M20为二手媒体表述，M21未取得全文，M22为用户提供的二次调研。</p>
+<h3>官方产品与技术</h3>
+<ul>
+<li><strong>M01 Meta产品公告。</strong> 发布于2026年9月8日；定位、入口、购买与未来计划。<a target="_blank" rel="noopener noreferrer" href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/">https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/</a></li>
+<li><strong>M02 How We Designed Muse。</strong> 主对话、Goals、Ideas、Artifacts、确定性审批和设计动机；由M01官方公告链接指向。<a target="_blank" rel="noopener noreferrer" href="https://introducing.muse.ai/">https://introducing.muse.ai/</a></li>
+<li><strong>M03 How We Built Safety Into Muse。</strong> 隔离、Sentinel、凭证、浏览器、支付、隐私及未来Confidential VM；由M01官方公告链接指向。<a target="_blank" rel="noopener noreferrer" href="https://security.muse.ai/">https://security.muse.ai/</a></li>
+<li><strong>M04 About Muse subscriptions。</strong> 价格、额度、地区与订阅资格；本次浏览器读到正文。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/subscriptions/1021145227643680/">https://www.meta.com/help/subscriptions/1021145227643680/</a></li>
+<li><strong>M05 How Muse works with Connectors。</strong> 内置与自定义连接、账户关联及断开边界。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/1687253048996149/">https://www.meta.com/help/artificial-intelligence/1687253048996149/</a></li>
+<li><strong>M06 How Muse works with payments。</strong> Link与商户已存卡两类路径、逐笔确认及责任提示。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/1436362127544482/">https://www.meta.com/help/artificial-intelligence/1436362127544482/</a></li>
+<li><strong>M07 Guidance and approval。</strong> 权限设置、不同批准范围、活动记录和停止动作。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/1385290430137537/">https://www.meta.com/help/artificial-intelligence/1385290430137537/</a></li>
+<li><strong>M08 Manage your Muse data。</strong> 训练默认设置、删除、遗忘、重置与导出。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/2225571704857152/">https://www.meta.com/help/artificial-intelligence/2225571704857152/</a></li>
+<li><strong>M09 Browsing the web。</strong> 浏览器可见性、接管、凭证及数据控制。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/2124746764949121/">https://www.meta.com/help/artificial-intelligence/2124746764949121/</a></li>
+<li><strong>M10 Files and apps in your Mac。</strong> 完整磁盘访问、本地应用分级、自动化及屏幕信息。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/1126304576638594/">https://www.meta.com/help/artificial-intelligence/1126304576638594/</a></li>
+<li><strong>M11 Skills。</strong> 内置技能、音频、图像、文档及任务。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/2797651547267109/">https://www.meta.com/help/artificial-intelligence/2797651547267109/</a></li>
+<li><strong>M12 Reminders and scheduled tasks。</strong> 一次性、地点与周期任务，查看、修改和取消。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/1484325780075655/">https://www.meta.com/help/artificial-intelligence/1484325780075655/</a></li>
+<li><strong>M13 Artifacts。</strong> 文件类型、生成与修改、Library和外部分享。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/2074655449783957/">https://www.meta.com/help/artificial-intelligence/2074655449783957/</a></li>
+<li><strong>M14 Personality and memories。</strong> 人格、文件式记忆、上下文来源及导入。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/995796179982326/">https://www.meta.com/help/artificial-intelligence/995796179982326/</a></li>
+<li><strong>M15 Getting started。</strong> 账户、对话、任务和入门边界。<a target="_blank" rel="noopener noreferrer" href="https://www.meta.com/help/artificial-intelligence/1331373868832401/">https://www.meta.com/help/artificial-intelligence/1331373868832401/</a></li>
+</ul>
+<h3>支付与竞品原始资料</h3>
+<ul>
+<li><strong>M16 Link购买保护。</strong> 合作方、资格、保障类型及限额；并非所有购买无条件覆盖。<a target="_blank" rel="noopener noreferrer" href="https://support.link.com/questions/what-s-covered-with-protections">https://support.link.com/questions/what-s-covered-with-protections</a></li>
+<li><strong>M17 Stripe Giving agents the ability to pay。</strong> spend request、一次性卡或SPT、逐笔审阅；不代表Muse已集成全部能力。<a target="_blank" rel="noopener noreferrer" href="https://stripe.com/blog/giving-agents-the-ability-to-pay">https://stripe.com/blog/giving-agents-the-ability-to-pay</a></li>
+<li><strong>M18 OpenAI ChatGPT Work。</strong> 当前工作流定位，跨工具及产物；旧Agent公告已提示过期，因此不用旧套餐或模型指标比较。<a target="_blank" rel="noopener noreferrer" href="https://openai.com/zh-Hans-CN/chatgpt-work/">https://openai.com/zh-Hans-CN/chatgpt-work/</a></li>
+<li><strong>M19 Claude工作产品页。</strong> 旧研究预览入口跳转后的现行页面；用于工作流定位比较，不作全面规格排名。<a target="_blank" rel="noopener noreferrer" href="https://claude.com/product/cowork">https://claude.com/product/cowork</a></li>
+</ul>
+<h3>二次资料与未核实项</h3>
+<ul>
+<li><strong>M20 RuntimeWire。</strong> 已读；交易收费为采访转述，本次未独立核实完整原始采访或正式商业条款。<a target="_blank" rel="noopener noreferrer" href="https://runtimewire.com/article/meta-muse-ai-agent-transaction-fees-free-tokens">https://runtimewire.com/article/meta-muse-ai-agent-transaction-fees-free-tokens</a></li>
+<li><strong>M21 Reuters线索。</strong> 本次访问受限，未取得正文；不据此新增事故事实。<a target="_blank" rel="noopener noreferrer" href="https://www.reuters.com/business/meta-launches-ai-agent-that-can-access-other-apps-send-emails-make-payments-2026-09-08/">https://www.reuters.com/business/meta-launches-ai-agent-that-can-access-other-apps-send-emails-make-payments-2026-09-08/</a></li>
+<li><strong>M22 用户提供的Muse调研页。</strong> 2026年9月22日快照；已读9个章节及6项风险折叠内容，作为线索而非最终事实依据。<a target="_blank" rel="noopener noreferrer" href="https://muse.ai/s/muse-exu64axy3vk9m">https://muse.ai/s/muse-exu64axy3vk9m</a></li>
+</ul>
+<p>其他复核记录：CryptoBriefing所读文章主要是订阅收入预测，并未支撑原材料中全部交易抽成表述，因此未作为收费模式的核心依据。Social Media Today的Mac报道不再是唯一依据，本报告已以M10官方帮助页补核。</p>
+<h3>本地材料的用途</h3>
+<ul>
+<li>《AI 支付调研与下一步做法.docx》：行业控制框架、风险与组织、试点思路。</li>
+<li>《ai-payment-thinking.pdf》：国内支付既有资产、授权治理、B端及互操作思路。</li>
+<li>《ai-payment-ideas-review.pdf》：首期支付闭环与后置模型市场的取舍。</li>
+</ul>
+<p>这些本地材料用于形成启示，不证明任何国内项目已上线、合规链路已确认或经营效果已成立。本报告不构成法律、投资或产品采购结论。</p></article></div></dialog>
+  <script type="application/json" id="report-markdown">"# Muse产品调研报告与京东支付启示\n\n调研截止日期：2026年9月23日\n\n研究对象：Meta的个人AI Agent产品Muse。面向产品、支付、技术和风控团队，回答它是什么、如何工作、如何收费、哪些能力已被公开说明，以及哪些机制值得借鉴。\n\n本报告以用户提供的Muse调研页为起点，补充读取Meta官方产品公告、设计与安全说明、帮助中心，以及Stripe、Link和竞品官方资料。国内支付启示结合本地三份研究文件形成，但不将内部能力假设写成既有事实。\n\n**方法边界：这是公开资料案头研究，不是登录账户后的产品实测。** 本次没有连接个人账户、提交购买、运行长期任务或测量成功率。官方描述证明产品公开宣称的机制，不证明其在所有场景下有效；商业判断、竞争判断和行动建议另行标明。正文中的〔M编号〕对应文末来源。\n\n## 一 执行摘要\n\n### 核心判断\n\n**Muse值得研究的，不是又增加了一个能聊天的入口，而是把个人上下文、持续任务、工具执行、权限审批和交易放进了同一套使用流程。** 用户交付一个目标，Agent持续推进，敏感动作交回用户确认，并保留可检查的工作记录。这是本报告对其产品结构的概括，不是对任务可靠性的实测结论。〔分析；M01—M03〕\n\n对京东支付更直接的启示是：**Agent可以负责寻找和准备交易，支付系统应负责判断是否有权执行、约束执行范围，并把结果和异常处理闭环。** 不必先复制一个Muse，也不必照搬海外虚拟卡形态。〔启示；M06、M17；本地支付材料〕\n\n### 六项结论\n\n1. **产品形态已超出一次性问答。** 主对话、侧对话、跨会话记忆、Goals、定时任务和Artifacts共同承载长期协作；这些能力可以从官方说明获得支持。〔M02、M12—M15〕\n2. **工具覆盖与权限控制是两件事。** 内置连接器、自定义连接器、浏览器和Mac本地访问扩大可操作范围，但每一种接入也带来不同权限与数据风险。〔M05、M09、M10〕\n3. **重要创新在执行系统，不只在模型。** 官方将主Agent、安全服务、凭证保管、连接器执行和网络权限分开，假设Agent可能受攻击，再限制损害。〔M03〕\n4. **购买仍然逐笔确认。** 截至本次读取，Muse支付帮助页明确每次购买前请求批准。通用权限里的“始终允许”不能解释成已经支持无限制自主付款。〔M06、M07〕\n5. **订阅已明确，交易抽成仍是方向。** 官方列出免费限额、20美元/月和100美元/月方案；未来交易分成来自媒体对高管采访的转述，本次没有取得正式费率或商户合同。〔M04、M20〕\n6. **长期优势和长期风险来自同一处。** 更深的上下文和持续代办可能提高价值，也会增加权限暴露、错误影响与切换成本；这些尚不能由发布时的功能列表证明。〔分析；M03、M08、M14〕\n\n### 相比原调研页的重要更新\n\n本次已补到官方资料，确认了原先仅作单源参考的Mac本地操作、自定义连接器、Goals与Artifacts等机制，并读到订阅价格正文。同时补充了原材料容易遗漏的边界：同一Accounts Center中的部分Meta账户会自动连接；断开连接不自动删除已经形成的记忆；现有Secure VM并不从技术上排除Meta访问；支付不只有Link，还可使用商户账户中的已保存银行卡。〔M02—M06、M08、M10〕\n\n## 二 产品概况与成熟度\n\n| 维度 | 核实到的情况 | 解读边界 |\n| --- | --- | --- |\n| 产品定位 | 个人AI Agent，可按用户方向执行任务并连接应用服务 | 不等于全能代理或结果担保〔M01、M15〕 |\n| 发布 | Meta公告日期为2026年9月8日 | 公告日期不等于所有账户同时开放〔M01〕 |\n| 客户端 | 发布公告列出iOS、Android、网页及WhatsApp交互；本次帮助中心另有Mac使用说明 | 当前地区与账户可用性需以实际页面为准〔M01、M10〕 |\n| 账户 | 使用Meta账户，可以通过已有Facebook、Instagram账户或邮箱、手机号创建 | 不将原材料“免费也必须绑卡”当作已核验事实〔M15〕 |\n| 运行方式 | 专属云端环境，支持浏览器、文件与终端；Mac端可获授权访问本机 | 云端运行不等于所有推理和数据都不出虚拟机〔M02、M03、M10〕 |\n| 可用阶段 | 订阅帮助页仍写有限测试、并非所有地区开放 | 不给出未核实的全球覆盖清单〔M04〕 |\n| 年龄 | 订阅要求18岁或所在国家的法定成年年龄 | 这是订阅资格原文，不扩写所有入口的统一注册规则〔M04〕 |\n| 未确认经营数据 | 本次没有取得真实活跃、留存、付费、交易量或任务成功率数据 | 不以预测或券商估算替代经营事实 |\n\n### 时间线应如何阅读\n\n- **2026年9月8日：** Meta发布Muse公告，并通过公告链接提供设计与安全说明。〔M01—M03〕\n- **2026年9月22日：** 用户提供的原始分享页形成资料快照，部分能力标为单源或待核。〔M22〕\n- **2026年9月23日：** 本报告读取官方帮助中心，补核价格、Mac、支付、连接器、记忆等。帮助页只显示相对更新时间的，不据此推定准确功能上线日期。\n- **未来项：** 在本次读到的发布和安全材料中，Shop Pay、1Password、AI眼镜和Confidential VM仍以计划表述出现；本次没有取得足够证据证明它们已全面开放。〔M01、M03〕\n\n## 三 它解决什么用户问题\n\n### 1 从搜索答案转向推进事务\n\n官方案例包括整理家庭开学事项、汇总邮件与日历、寻找商品、安排出行、制作文件和追踪目标。共同点不是某个功能，而是信息散落在多个地方，任务横跨多步骤，用户需要反复切换和跟进。〔M01、M02〕\n\n本报告将其待验证价值概括为：**把“我需要一直记着并推动”变成“我设定目标、提供权限、处理关键决定”。** 节省的应是整个任务的处理和监督成本，而不仅是输入提示词的时间。〔分析〕\n\n| 任务类型 | Muse承接的工作 | 必须保留的人类控制 |\n| --- | --- | --- |\n| 个人事务与日程 | 阅读相关信息、提取截止时间、准备安排与提醒 | 授权访问范围，确认发送或修改〔M02、M07〕 |\n| 购物与预订 | 查找、比较、填写订单、准备结账 | 核对商户条款和订单，每次购买前批准〔M06、M09〕 |\n| 研究与产物 | 阅读文件，生成文档、表格、图像或交互页面 | 检查事实、格式和分享对象〔M11、M13〕 |\n| 长期目标 | 拆解计划、调度任务、跟进变化、提出建议 | 定期确认目标仍有效，调整或停止任务〔M02、M12〕 |\n\n### 2 哪些用户更可能感到价值\n\n以下是基于任务结构的用户假设，不是Meta公开的用户分群数据：\n\n- 日程、家庭或个人事务分散在多个服务中的用户，可能更需要跨来源协调。\n- 有反复研究、制作文件、跟进事项需求的个人工作者，可能更容易形成持续使用。\n- 经常比较和预订标准化商品服务的用户，可能更容易衡量省时价值。\n\n相反，简单搜索、极低频任务、对交出账户权限高度敏感的用户，未必能从复杂代理流程中得到净收益。应把任务收益、授权意愿和监督成本一起研究，不能只用“用户喜欢AI”判断需求。〔分析〕\n\n## 四 产品结构与用户旅程\n\n### 1 一个长期协作空间\n\n**主对话与侧对话。** 用户不必等待上一条回应才能继续分派任务。侧对话用于组织主题，但官方入门说明表示Muse仍会在主对话与侧对话间保持上下文感知，因此侧对话不是已承诺的严格数据隔离空间。〔M15〕\n\n**记忆与人格。** 名称、头像、语气和沟通偏好可定制；记忆包括直接提供的信息、交互模式和连接器上下文，并支持文件式查看或编辑。帮助页还描述了从其他助手导入历史对话的方式。价值在减少重复解释，但记忆错误也可能长期影响动作。〔M14；后一句为分析〕\n\n**Goals与Ideas。** Goals承载长期任务及计划；Ideas用于提示用户可以交给Muse做什么。官方设计说明指出，早期测试中用户“不知道从哪开始”是问题之一。Ideas既是能力发现入口，也是一种引导首次成功的设计，而非已验证的增长效果。〔M02〕\n\n**Activity与Upcoming。** 前者提供活动与授权记录，后者显示即将执行的提醒及任务。它们把“后台还在做事”变成可检查对象，是信任界面而不只是状态装饰。〔M07、M12；后一句为分析〕\n\n**Artifacts与Library。** 输出不局限于聊天文本，可处理PDF、DOCX、Markdown、XLSX、CSV、图片、代码及交互网页；文件可在Library保存和后续修改。外部分享需要用户开启或批准。〔M13〕\n\n### 2 从首次使用到持续使用\n\n| 阶段 | 用户与系统行为 | 应观察的体验问题 |\n| --- | --- | --- |\n| 开始 | 建立账户，提出第一个任务，设置必要偏好 | 能否快速完成一件真实有用的事？ |\n| 连接 | 按需接入服务、登录网站或启用本机能力 | 用户是否知道交出了什么权限？ |\n| 执行 | Agent调用工具，后台推进并显示活动 | 能否看懂进度，而不是被过程刷屏？ |\n| 批准 | 系统展示具体动作及允许或拒绝选项 | 审批内容是否足够明确，是否产生机械点击？ |\n| 交付 | 返回文件、结果、订单或提醒 | 是否正确完成，而非只显示“任务完成”？ |\n| 持续 | 更新计划、记忆和定时任务 | 是否值得继续授权，能否方便调整、撤销和退出？ |\n\n该旅程由官方使用说明整理；右栏是本报告提出的研究问题，不是已测得的体验表现。〔M02、M07、M12—M15〕\n\n### 3 提醒不等于完整自动化\n\n帮助页确认一次性、地点提醒及周期任务，支持查看、修改和取消，并按用户时区处理时间。但提醒成功送达，不能证明其背后的跨站检查、复杂执行或长期监控都可靠。应该分别测量调度触发、任务执行、结果正确和通知到达，而不是合并成一个“提醒功能已可用”。〔M12；测量建议〕\n\n## 五 执行与安全架构\n\n### 1 关键不是允许Agent做什么 而是谁最终批准\n\n官方安全说明的核心思想是：**假设主Agent可能误判或受到提示词注入，不能让它同时掌握任务执行与权限裁决。** 主Agent在受限运行环境中工作；凭证保管、安全检测、内置连接器执行和Sentinel权限服务放在分离的安全域。〔M03〕\n\n概念链路可以表述为：\n\n用户目标 → Muse规划与工具请求 → 独立权限裁决 → 必要时结构化批准 → 受控工具或网络执行 → 活动记录与结果。\n\n这里的“独立”指架构上的隔离，不代表控制完全不使用模型，也不代表不存在共同失效或漏判。官方自身明确提示Muse仍可能出错，提示词注入尚未被彻底解决。〔M03〕\n\n### 2 三个值得理解的机制\n\n- **权限与凭证分离。** 主Agent提出动作，Sentinel负责允许、拒绝或询问用户；凭证由另一服务保管。模型没有必要知道真实密码和API密钥。〔M03〕\n- **执行时才注入秘密。** 官方描述用替代标识参与调用，在具体请求获准后才于可信边界注入真实凭证。它减少模型直接暴露秘密的机会，但不自动阻止所有“使用合法权限做坏事”的风险。〔M03；后半句为分析〕\n- **批准绑定实际范围。** 批准通过独立界面回到权限服务，而非仅在聊天里回复“可以”。通用动作可以有单次、任务或站点等范围，用户还能管理已批准项。〔M03、M07〕\n\n不应把这套机制简化为“再增加一个安全Agent就够了”。真正需要验证的是控制是否处于不可绕过的执行路径，确认界面是否绑定准确对象，以及上下文变化后旧批准是否仍被错误复用。〔分析〕\n\n### 3 浏览器并非不受限制的自动点击器\n\n官方提供可观察、可接管和可停止的浏览器流程；密码进入安全凭证存储，而非交给模型读取。安全说明还描述了隔离的浏览器控制接口。该设计降低部分凭证暴露路径，但并不证明所有站点都可稳定自动操作。〔M03、M09〕\n\n网站变化、登录失效、验证码、订单参数变化和任务中断应作为独立验收项。这里是测试建议，不是对Muse实际故障率的断言。〔分析〕\n\n## 六 连接器与Mac扩展\n\n### 1 三种连接方式带来不同信任成本\n\n| 方式 | 已核实机制 | 风险和边界 |\n| --- | --- | --- |\n| 内置连接器 | 官方与服务商对接；可按服务授权，部分支持只读及变更通知 | 第三方仍按自身条款处理收到的信息〔M05〕 |\n| 自定义连接器 | 可让Muse为列表外服务创建连接，可能需要API信息 | Meta明确不审核其行为和信息使用，不能视同内置连接器〔M05〕 |\n| 浏览器 | 通过网站界面搜索、填写表单、购买；用户可接管 | 能登录不等于允许所有动作；购买仍需批准〔M06、M09〕 |\n\n原调研页列出的Spotify、Plaid、Ticketmaster、OpenTable、Peloton等，不在本报告中扩写为已复核的完整目录。官方帮助页可以确认Gmail示例、Google Workspace相关规则、Apple Health及Android SMS的设备权限说明，以及Meta产品连接机制。具体列表应以账户内可用连接器为准。〔M05、M22〕\n\n### 2 两个容易忽略的连接边界\n\n**Meta账户连接并非全部逐项手工开启。** 连接器帮助页写明，当账户位于同一Accounts Center时，Facebook、Instagram和Threads会自动连接。这个机制与笼统的“每个服务都要另外授权一次”不同，产品研究应关注用户是否知道账户关联会带来什么上下文。〔M05；后句为分析〕\n\n**断开连接不等于清空数据。** 断开后停止后续交换，但此前进入记忆或对话的信息可能保留，需要另行管理。停止访问、遗忘主题、删除文件、退出训练和重置账户是不同控制，不应只提供一个含糊的“撤销授权”入口。〔M05、M08；后句为启示〕\n\n### 3 Mac能力已获得官方支持 但不等于细粒度系统权限\n\n本次官方帮助页确认：Mac应用可查找、整理和管理文件，读取iMessage、Notes、Reminders、Email、Calendar等本地信息，并可在授权后执行部分应用动作。其依赖macOS的完整磁盘访问、自动化和通知权限。〔M10〕\n\n帮助页提供按本地应用关闭、只读、读写交互等选项，并说明删除文件会进入废纸篓。但完整磁盘访问在操作系统层面的范围很广，不能因为产品承诺仅处理指定文件，就把它理解为系统权限天然只覆盖那几份文件。官方也提醒用户监督异常行为。〔M10〕\n\n因此，本报告将Mac能力从原调研的“单源报道”提升为“官方已描述”；仍不声称已经完成实际安装、性能或权限隔离测试。\n\n## 七 支付机制与责任边界\n\n### 1 Muse有两类已公开说明的付款路径\n\n**路径A 使用Link。** Muse准备购买信息，用户批准后使用Link提供的一次性卡完成结账。Meta的说明把凭证与特定商户、金额及时效关联，并将购买保护限定在符合条件的交易。〔M03、M06〕\n\n**路径B 使用商户账户已保存的银行卡。** Muse可以通过安全凭证存储登录商户账户，再使用已保存的银行卡付款；同样需要购买前批准。支付能力还受地区、商户和结账流程影响。〔M06〕\n\n这意味着不能写成“所有Muse购买均走Link”“所有商户都只看到一次性卡”或“所有订单都享受同等购买保护”。两条路径的资金凭证、受理和售后保障条件需要分别看待。\n\n### 2 三种授权不能混为一谈\n\n| 授权层次 | 它解决的问题 | 不代表什么 |\n| --- | --- | --- |\n| 连接授权 | Muse能否读取某服务或登录某账户 | 不代表可以任意修改或购物 |\n| 动作批准 | 某类操作在单次、任务或站点范围内是否允许 | 不代表所有敏感动作都免确认 |\n| 购买确认 | 这笔具体订单是否可以完成 | 不保证订单正确、履约成功或退款成立 |\n\n官方通用审批文档支持多种授权范围，但支付文档明确“每次购买前批准”。涉及支付时应使用更具体的产品说明，不用通用“Always allow”推导出自主支付能力。〔M06、M07〕\n\nStripe的Link钱包说明则进一步提供一个技术参照：Agent可发起spend request，经本人审阅后取得一次性卡或Shared Payment Token；原始凭证不交给Agent。本次读到的该页面同样把免额外批准的扩展控制描述为未来计划。**这是Link通用能力说明，不等于Muse已经开放SPT、ACP或全部接口。**〔M17〕\n\n### 3 购买保护不是平台对任务结果兜底\n\nLink支持页说明其与XCover合作，为符合条件的商品提供损坏、丢失、失窃、退货、价格及退款相关保障，各项有资格与限额。没有必要把这些保障扩写为“AI买错也无条件赔付”。〔M16〕\n\nMeta支付帮助页写明订单由购买的商户履约，要求用户核验交易、商户条款与收据，并对代其进行的交易负责。这里是产品提示的转述，不是本报告对任何具体纠纷法律责任的判断。〔M06〕\n\n对支付团队而言，至少应分开设计：**权限是否充分、资金是否执行、商品是否正确、商户是否履约、争议如何处理。** 这五个问题没有一个能只靠“扣款成功”回答。〔启示〕\n\n## 八 商业模式与经济性\n\n### 1 当前已核实的订阅方案\n\n| 方案 | 帮助页显示价格 | 每周额度 |\n| --- | --- | --- |\n| 免费 | 免费，有限使用量 | 官方该页未给出具体token数 |\n| Power | 20美元每月 | 5亿Muse tokens |\n| Maximum | 100美元每月 | 30亿Muse tokens |\n\n价格和额度在2026年9月23日从官方页面读到；具体权益与可用性可能因地区、账户变化，应以订阅前展示为准。订阅每月自动续费，可取消或管理付款方式。〔M04〕\n\n**不要把免费每周1亿tokens写成该帮助页已确认。** 该数值见于原调研及媒体报道，本次官方订阅页仅写有使用上限。此外，官方页面强调升级带来更多额度，不足以证明所有地区、账户和客户端功能完全相同。〔M04、M20、M22〕\n\nToken不是任务数。复杂任务、重试、访问网站和产物制作的消耗不同，用户真正购买的价值应以正确完成任务与节省时间衡量。本次没有取得每任务消耗、服务成本或毛利数据，因此不计算“可做多少次任务”或“订阅必然盈利”。〔分析〕\n\n### 2 交易抽成是待落地的战略选项\n\nRuntimeWire转述2026年9月8日采访，称Zuckerberg讨论过对Muse促成的购物、节省或创造收益收取小比例费用，并可能由参与交易的企业付费。文章没有给出正式费率、上线时间、适用交易及商户条款。〔媒体转述；M20〕\n\n本次另读到的CryptoBriefing文章主要是订阅与券商收入假设，不能单凭其标题把它用作“交易抽成已成立”的证据。原分享页对商业终局的表述，应收敛为**可能探索，而非确定终局，更不是现有收入事实**。〔M22；本次来源复核〕\n\n### 3 经济模型的四项待证条件\n\n- **需求持续：** 用户不是只试一次，而是有稳定任务需要交付。\n- **单位经济可行：** 订阅或未来交易收入足以覆盖推理、虚拟机、重试、客服与风险成本。\n- **商户愿意支付：** Muse带来可归因增量或可衡量效率，而非只是替代原有流量路径。\n- **推荐值得信任：** 商户付费不能在不透明的情况下扭曲用户的选购结果。\n\n以上是本报告的商业评估框架。当前资料不足以验证任何一项已经达标。尤其当交易失败、退款、归因跨平台或商户未建立合作关系时，收费如何成立仍是开放问题。\n\n## 九 竞争位置与可能的优势\n\n### 1 比较应看产品重心 而非固定功能清单\n\n本次发现，OpenAI的2025年ChatGPT Agent发布页已提示内容过期，并指向现行工作产品；Claude旧Cowork入口也转向当前产品页。因此不沿用原分享页中“某竞品仅本地桌面”“只能从某价格档开始”等过期风险较高的对比。〔M18、M19〕\n\n| 对比对象 | 本次官方材料体现的重点 | 对Muse的研究意义 |\n| --- | --- | --- |\n| Muse | 个人上下文、生活事务、长期任务、可观察执行和Link购买 | 观察是否能形成持续的个人委托关系〔M01、M02、M06〕 |\n| ChatGPT Work | 跨工具、文件及桌面流程，把上下文转成文档、表格、演示和交互产物 | 工作交付与持续任务并非Muse独有〔M18〕 |\n| Claude现行工作产品 | 跨文件和工具执行、计划与监督、浏览器、后台和并行工作 | “能操作电脑”本身不足以构成持久差异〔M19〕 |\n\n这只是定位比较，不是全面能力、价格或性能排名；未对三个产品执行同一组任务，也未验证各账户的实际可用性。\n\n### 2 Muse可能形成优势的地方\n\n**分发与上下文组合。** WhatsApp交互和Meta账户关联可能降低入口切换成本，并带入关系与兴趣上下文；是否真正提高留存与任务成功，需要数据而非生态规模推导。〔分析；M01、M05〕\n\n**持续记忆与任务习惯。** 长期偏好、文件和任务可能提高复用价值，也可能提高迁移成本。官方提供记忆导入和数据导出说明，意味着不能把用户锁定描绘为不可避免。〔分析；M08、M14〕\n\n**可信执行与支付组合。** 权限界面、凭证隔离、购买确认及符合条件的保护，可能让用户更愿意从“问它”走到“交给它做”。这是一项可验证的转化假设，不是现成的竞争壁垒。〔分析；M03、M06、M16〕\n\n### 3 不应夸大的地方\n\n本报告不使用“全球首个”“唯一安全”“全面领先”等未经独立比较支持的结论。浏览器、工具、记忆、子Agent、定时任务和产物都需要比较质量、成本与控制，而不是仅比较是否存在。最终竞争更可能体现为正确完成率、用户监督成本、可恢复性和持续使用。〔分析〕\n\n## 十 隐私 风险与证据边界\n\n### 1 现有Secure VM不是平台不可见模式\n\n官方安全说明明确，现有架构通过隔离与运营政策限制访问，但不从技术上阻止Meta在支持、安全或运营需要时访问。Confidential VM旨在提供更强的密码学隔离，在所读材料中仍是未来计划。〔M03〕\n\n因此，“凭证不进入主模型”“不同用户环境隔离”“Meta无法读取用户数据”是三个不同命题，不能互相替代。\n\n### 2 训练和广告需要分别理解\n\n**训练设置。** 数据帮助页说明改善模型的设置初始为开启，用户可以关闭；关闭后的政策选择也适用于此前交互。官方描述会移除部分个人标识并与账户脱关联，但这不等于所有敏感商业语义必然消失，也不等于已训练模型可被逐条逆向删除。〔M08；后半句为限制解释〕\n\n**广告关系。** 官方说不把Muse对话与虚拟机数据共享给Meta广告系统；安全说明同时指出，Muse代表用户访问商户或完成站内操作，仍可能间接影响其看到的广告。不能将前一句扩写为“任何行为都不影响广告”。〔M03〕\n\n**Mac与第三方。** Mac帮助页将执行中使用的应用信息和屏幕截图也纳入交互信息说明。连接器和网站仍有自己的隐私条款，用户在Muse中的控制不能自动约束所有接收方。〔M05、M10〕\n\n### 3 主要风险与验证问题\n\n| 风险 | 为什么重要 | 应验证什么 |\n| --- | --- | --- |\n| 提示词注入 | 私有信息、外部不可信内容和可执行动作相遇 | 能否阻止无关数据外传和未经批准的动作？ |\n| 权限误解 | 只读、任务批准、站点批准和购买批准容易被混同 | 用户能否复述权限，旧批准是否被错误扩展？ |\n| 审批疲劳 | 过度打断可能导致用户直接点击通过 | 需要人工判断的内容是否清晰且足够少？ |\n| 长期任务漂移 | 目标、价格、地址和账户状态可能变化 | 是否重新确认，能否发现静默停止和错误重复？ |\n| 本机广泛访问 | 系统权限大于用户当下任务范围 | 是否超范围读写，撤销后是否停止访问？ |\n| 交易与恢复 | 付款成功不代表任务或履约成功 | 回执、退款、取消、争议各由谁处理？ |\n\n风险框架来自官方风险提示和本报告分析，并非已发现的Muse漏洞清单。〔M03、M06—M10〕\n\n### 4 未被证明的内容\n\n- 没有取得生产环境的任务完成率、提示词注入防护通过率、长周期稳定性及严重事故率。\n- 没有取得真实付费用户数、订阅留存、Agent促成交易量及收入结构。\n- 原分享页提及的Reuters内部测试事件，本次直接访问受限，未核实原文，不将具体事故、延期原因写成独立确认事实。〔M21、M22〕\n- Feed完整来源与排序、加拿大覆盖及当地定价、Muse模型家族与产品内功能的一一映射，未完成充分核验。官方支持图像或音频技能，不等于证明完整语音助手或某一模型产品已全面整合。〔M11、M22〕\n\n## 十一 对京东支付和Agent产品的启示\n\n### 启示一 抢占交易执行接口 不必先争夺通用入口\n\n**观察：** Muse准备任务和订单，Link及商户既有支付关系承接资金动作。〔M06、M17〕\n\n**建议：** 京东支付优先为内部或合作Agent提供标准请求、授权校验、执行、查询、退款和证据接口。先确认谁愿意持续调用，而不是先搭建一个新的聊天入口。\n\n**不能照搬：** 海外一次性卡受发卡与受理网络条件影响，国内应先核验可用资金路径、资质、渠道协议和责任，不把产品名称或凭证形态当作答案。\n\n### 启示二 授权应是可管理的对象\n\n**观察：** Muse把权限设置、具体批准和活动记录做成显式界面，而不只依赖聊天记录。〔M07〕\n\n**建议：** 至少让用户看见授权给谁、为哪个任务、允许哪些对象、额度、频率、有效期及如何撤销。支付层保存可关联的授权版本和单笔请求。\n\n**验证：** 用户能否正确解释边界？参数变化是否要求重新决策？撤销未来授权是否与取消在途交易、已付退款明确区分？\n\n### 启示三 把权限校验放到不可绕过的执行路径\n\n**观察：** 主Agent不能自己批准工具和网络动作，真实凭证也不由主模型直接保管。〔M03〕\n\n**建议：** 让Agent提出支付请求，可信支付域负责规则、风控、凭证和执行。模型可抽取信息或解释原因，但不能自行增大额度、改授权或把“用户说过可以”当作充分依据。\n\n**不能照搬：** 部署另一个模型来审查，不等于已有确定性支付控制；是否可绕过、幂等、防重放和最终资金状态都需要单独验证。\n\n### 启示四 从逐笔确认逐步验证授权自动化\n\n**观察：** Muse已经可在后台推进任务，但其购买流程仍逐笔确认。〔M06、M12〕\n\n**建议：** 首期可以自动完成查找、比价、请求准备和证据收集，再让用户确认付款；有了真实理解与风险数据后，才评估低额、短时、明确对象的规则内自动执行。\n\n**验证：** 自动化是否真的减少总处理时间？用户确认数量下降时，错误、撤回和争议有没有上升？不把“免打扰率越高越好”作为单一目标。\n\n### 启示五 把售后恢复与扣款同批交付\n\n**观察：** Link保护有条件，Meta并不替所有商户履约，也没有承诺所有任务失败由平台兜底。〔M06、M16〕\n\n**建议：** 首期即打通明确回执、主动查询、未知状态核查、退款、对账、投诉与证据。客服应能还原谁批准了什么，而不是被要求阅读一大段模型对话。\n\n**验证：** 超时会不会造成重复付款？退款和撤销是否有确定状态？支付、Agent和商户是否对同一订单使用一致标识？\n\n### 启示六 用真实工作任务建立长期价值\n\n**观察：** Muse的持续使用结构包括Goals、记忆、周期任务和可修改产物，支付只是其中一个环节。〔M02、M12—M14〕\n\n**建议：** 对京东生态优先评估标准复购、订阅治理、企业低额采购等能复用已有关系的场景。B端有预算、审批和审计优势，也有财务与采购系统协同成本，不能预设必然更快落地。\n\n**验证：** 真实业务方能否持续发起任务？采购或运营流程的总耗时、人工成本和差错是否下降？不是只统计演示付款次数。\n\n### 启示七 商业化先问谁受益 再决定谁付费\n\n**观察：** Muse目前有订阅，交易收费尚未形成公开可验证的完整机制。〔M04、M20〕\n\n**建议：** 分别验证Agent接入方、商户、企业客户和最终用户获得什么增量价值，再讨论执行服务、授权风控、费用控制或交易分成。模型能力市场更应等到真实任务和付费需求出现。\n\n**边界：** 以上为结合本地支付材料的建议，不证明京东现有系统已具备这些能力。CloudTip与ClawTip的名称关系、A2P2状态、渠道适用性和责任安排仍需内部底稿确认。\n\n## 十二 下一步如何验证这些启示\n\n### 1 建议采用小场景而非大平台立项\n\n选定一个已有调用方、可用资金路径、明确商户和退款规则的场景。优先看能否得到真实对照数据，而非场景名称是否前沿。若涉及真实账户、资金或个人信息，应先完成内部授权和风险评审。以下为建议计划，并未实际执行。\n\n| 阶段 | 工作 | 阶段证据 |\n| --- | --- | --- |\n| 第1至2周 | 盘点现有能力，访谈首个调用方，确认一个场景和责任 | 不是需求口号，而是可重复任务及当前成本 |\n| 第3至4周 | 做授权、确认、撤销和结果界面；形成异常案例 | 用户理解边界，团队能解释每笔为何允许或拒绝 |\n| 第31至60天 | 沙箱或批准的内部试点，接入执行、查询、退款与审计 | 端到端无未解释断点；非支付团队可独立接入 |\n| 第61至90天 | 条件满足后小流量验证，比较原流程和新流程 | 正确完成、风险、恢复与成本支持继续或停止 |\n\n真实资金和自动支付阶段取决于前置条件，不因日历走到某一天就自动放开。\n\n### 2 四项核心假设与实验\n\n| 假设 | 最小验证方式 | 不成立时如何处理 |\n| --- | --- | --- |\n| 用户愿意委托 | 用具体任务测试授权理解、接受和撤回原因 | 缩小权限或回到逐笔确认，而非只改文案 |\n| 执行比原流程更有价值 | 对同类任务记录总耗时、人工介入和正确结果 | 优化场景或停止自动化，不以交易额掩盖成本 |\n| 控制与恢复可用 | 演练越权、重复请求、超时、撤销及退款异常 | 不进入扩量；先消除资金和权限断点 |\n| 接入和收费有需求 | 让非支付团队独立接入，并访谈受益方 | 简化接口、调整收费对象或暂停平台化 |\n\n建议将同一测试集用于后续Muse、内部Agent或合作产品的比较，但必须单独取得账户和测试授权。本报告不虚构已完成的对比结果。\n\n### 3 指标不能只看使用量\n\n- **任务质量：** 正确完成率，而非只看工具调用成功或支付成功。\n- **用户控制：** 授权理解正确率、追加确认、撤销原因与越界事件。\n- **运行可靠性：** 调度是否触发、未知状态多久查清、重复动作与失败恢复。\n- **效率价值：** 总处理时间、人工介入和每个正确完成任务的全成本。\n- **持续需求：** 首次新鲜感之后，是否仍有主动复用和业务调用。\n- **商业证据：** 受益方实际接受的合作或付费条件，而非口头“感兴趣”。\n\n目前没有足够资料设定统一数值目标，应先建立基线，并事先约定风险阈值与停止条件。小样本零事故不等于真实风险为零。\n\n## 十三 总结\n\nMuse展示了一种更完整的个人Agent产品结构：**让用户交付目标，由系统持续推进，把关键权限和不可逆决定放在可检查的控制流程中。** 它的研究价值既在于能做什么，也在于明确哪些事不能由主Agent自行决定。\n\n对京东支付，优先级不是“做中国版Muse”或“重新包装Token”，而是把已有基础能力组织成Agent可接入的授权、执行和恢复服务。先用一个真实场景证明用户理解、权限控制、资金结果和售后闭环，再扩展场景、互操作与商业化。〔综合判断；官方资料与本地支付材料〕\n\n**最需要补证的仍是三件事：谁会长期委托，系统能多可靠地完成，以及整个过程是否真的比原来更省成本。** 功能清单、模型能力和平台愿景都不能替代这三类证据。\n\n## 附录 资料来源与核验说明\n\n所有下列“已读”资料均在2026年9月23日直接取得正文；日期标为发布日的除外。官方资料以M01—M19为主，M20为二手媒体表述，M21未取得全文，M22为用户提供的二次调研。\n\n### 官方产品与技术\n\n- **M01 Meta产品公告。** 发布于2026年9月8日；定位、入口、购买与未来计划。https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/\n- **M02 How We Designed Muse。** 主对话、Goals、Ideas、Artifacts、确定性审批和设计动机；由M01官方公告链接指向。https://introducing.muse.ai/\n- **M03 How We Built Safety Into Muse。** 隔离、Sentinel、凭证、浏览器、支付、隐私及未来Confidential VM；由M01官方公告链接指向。https://security.muse.ai/\n- **M04 About Muse subscriptions。** 价格、额度、地区与订阅资格；本次浏览器读到正文。https://www.meta.com/help/subscriptions/1021145227643680/\n- **M05 How Muse works with Connectors。** 内置与自定义连接、账户关联及断开边界。https://www.meta.com/help/artificial-intelligence/1687253048996149/\n- **M06 How Muse works with payments。** Link与商户已存卡两类路径、逐笔确认及责任提示。https://www.meta.com/help/artificial-intelligence/1436362127544482/\n- **M07 Guidance and approval。** 权限设置、不同批准范围、活动记录和停止动作。https://www.meta.com/help/artificial-intelligence/1385290430137537/\n- **M08 Manage your Muse data。** 训练默认设置、删除、遗忘、重置与导出。https://www.meta.com/help/artificial-intelligence/2225571704857152/\n- **M09 Browsing the web。** 浏览器可见性、接管、凭证及数据控制。https://www.meta.com/help/artificial-intelligence/2124746764949121/\n- **M10 Files and apps in your Mac。** 完整磁盘访问、本地应用分级、自动化及屏幕信息。https://www.meta.com/help/artificial-intelligence/1126304576638594/\n- **M11 Skills。** 内置技能、音频、图像、文档及任务。https://www.meta.com/help/artificial-intelligence/2797651547267109/\n- **M12 Reminders and scheduled tasks。** 一次性、地点与周期任务，查看、修改和取消。https://www.meta.com/help/artificial-intelligence/1484325780075655/\n- **M13 Artifacts。** 文件类型、生成与修改、Library和外部分享。https://www.meta.com/help/artificial-intelligence/2074655449783957/\n- **M14 Personality and memories。** 人格、文件式记忆、上下文来源及导入。https://www.meta.com/help/artificial-intelligence/995796179982326/\n- **M15 Getting started。** 账户、对话、任务和入门边界。https://www.meta.com/help/artificial-intelligence/1331373868832401/\n\n### 支付与竞品原始资料\n\n- **M16 Link购买保护。** 合作方、资格、保障类型及限额；并非所有购买无条件覆盖。https://support.link.com/questions/what-s-covered-with-protections\n- **M17 Stripe Giving agents the ability to pay。** spend request、一次性卡或SPT、逐笔审阅；不代表Muse已集成全部能力。https://stripe.com/blog/giving-agents-the-ability-to-pay\n- **M18 OpenAI ChatGPT Work。** 当前工作流定位，跨工具及产物；旧Agent公告已提示过期，因此不用旧套餐或模型指标比较。https://openai.com/zh-Hans-CN/chatgpt-work/\n- **M19 Claude工作产品页。** 旧研究预览入口跳转后的现行页面；用于工作流定位比较，不作全面规格排名。https://claude.com/product/cowork\n\n### 二次资料与未核实项\n\n- **M20 RuntimeWire。** 已读；交易收费为采访转述，本次未独立核实完整原始采访或正式商业条款。https://runtimewire.com/article/meta-muse-ai-agent-transaction-fees-free-tokens\n- **M21 Reuters线索。** 本次访问受限，未取得正文；不据此新增事故事实。https://www.reuters.com/business/meta-launches-ai-agent-that-can-access-other-apps-send-emails-make-payments-2026-09-08/\n- **M22 用户提供的Muse调研页。** 2026年9月22日快照；已读9个章节及6项风险折叠内容，作为线索而非最终事实依据。https://muse.ai/s/muse-exu64axy3vk9m\n\n其他复核记录：CryptoBriefing所读文章主要是订阅收入预测，并未支撑原材料中全部交易抽成表述，因此未作为收费模式的核心依据。Social Media Today的Mac报道不再是唯一依据，本报告已以M10官方帮助页补核。\n\n### 本地材料的用途\n\n- 《AI 支付调研与下一步做法.docx》：行业控制框架、风险与组织、试点思路。\n- 《ai-payment-thinking.pdf》：国内支付既有资产、授权治理、B端及互操作思路。\n- 《ai-payment-ideas-review.pdf》：首期支付闭环与后置模型市场的取舍。\n\n这些本地材料用于形成启示，不证明任何国内项目已上线、合规链路已确认或经营效果已成立。本报告不构成法律、投资或产品采购结论。\n"</script>
+  <script>
+    const findingButtons = [...document.querySelectorAll('[data-finding-filter]')];
+    const findingCards = [...document.querySelectorAll('.finding')];
+    findingButtons.forEach(button => button.addEventListener('click', () => {
+      findingButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      const filter = button.dataset.findingFilter;
+      findingCards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.evidence !== filter; });
+      document.getElementById('finding-count').textContent = `${findingCards.filter(card => !card.hidden).length} 项结论`;
+    }));
+    function selectTab(tab) {
+      const tabs = [...tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]')];
+      tabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+      });
+    }
+    document.querySelectorAll('[role="tablist"]').forEach(list => {
+      const tabs = [...list.querySelectorAll('[role="tab"]')];
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => selectTab(tab));
+        tab.addEventListener('keydown', event => {
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          const current = tabs.indexOf(tab);
+          const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (current + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+          selectTab(tabs[next]);
+          tabs[next].focus();
+        });
+      });
+    });
+    const sourceItems = [...document.querySelectorAll('.source-item')];
+    const sourceButtons = [...document.querySelectorAll('[data-source-filter]')];
+    const sourceSearch = document.getElementById('source-search');
+    const sourceMore = document.getElementById('source-more');
+    let sourceFilter = 'all';
+    let sourcesExpanded = false;
+    function renderSources() {
+      const query = sourceSearch.value.trim().toLocaleLowerCase();
+      const matching = sourceItems.filter(item => (sourceFilter === 'all' || item.dataset.category === sourceFilter) && item.textContent.toLocaleLowerCase().includes(query));
+      const showAll = sourcesExpanded || query.length > 0 || sourceFilter !== 'all';
+      sourceItems.forEach(item => { item.hidden = !matching.includes(item) || (!showAll && matching.indexOf(item) >= 6); });
+      const shown = sourceItems.filter(item => !item.hidden).length;
+      document.getElementById('source-status').textContent = `显示 ${shown} / ${matching.length} 项来源 · 核验截止 2026年9月23日`;
+      document.getElementById('source-empty').hidden = matching.length > 0;
+      sourceMore.hidden = matching.length <= 6 || query.length > 0 || sourceFilter !== 'all';
+      sourceMore.textContent = sourcesExpanded ? '收起来源列表' : `查看全部 ${matching.length} 项来源`;
+      sourceButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.sourceFilter === sourceFilter)));
+    }
+    sourceButtons.forEach(button => button.addEventListener('click', () => { sourceFilter = button.dataset.sourceFilter; renderSources(); }));
+    sourceSearch.addEventListener('input', renderSources);
+    sourceMore.addEventListener('click', () => { sourcesExpanded = !sourcesExpanded; renderSources(); });
+    renderSources();
+    const dialog = document.getElementById('report-dialog');
+    const dialogClose = dialog.querySelector('.dialog-close');
+    document.querySelectorAll('[data-report]').forEach(button => button.addEventListener('click', () => {
+      dialog.showModal();
+      document.body.classList.add('modal-open');
+      dialogClose.focus();
+    }));
+    dialogClose.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const bounds = dialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+    });
+    document.querySelectorAll('[data-print]').forEach(button => button.addEventListener('click', () => window.print()));
+    document.querySelectorAll('[data-download]').forEach(button => button.addEventListener('click', () => {
+      const markdown = JSON.parse(document.getElementById('report-markdown').textContent);
+      const url = URL.createObjectURL(new Blob([markdown], {type: 'text/markdown;charset=utf-8'}));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Muse产品调研报告与京东支付启示.md';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }));
+    function revealSource(hash, scroll = true) {
+      const source = sourceItems.find(item => `#${item.id}` === hash);
+      if (!source) return;
+      if (dialog.open) dialog.close();
+      sourceFilter = 'all';
+      sourceSearch.value = '';
+      sourcesExpanded = true;
+      renderSources();
+      if (scroll) {
+        source.scrollIntoView({behavior: 'instant', block: 'center'});
+        source.querySelector('a').focus({preventScroll: true});
+        source.classList.remove('source-focus');
+        requestAnimationFrame(() => source.classList.add('source-focus'));
+      }
+    }
+    document.querySelectorAll('a[href^="#source-"]').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      const hash = link.getAttribute('href');
+      history.pushState(null, '', hash);
+      revealSource(hash);
+    }));
+    window.addEventListener('hashchange', () => revealSource(location.hash));
+    revealSource(location.hash);
+    const menuButton = document.querySelector('.mobile-menu');
+    const sidebar = document.getElementById('sidebar');
+    function closeMenu() { sidebar.classList.remove('mobile-open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', '打开章节目录'); }
+    menuButton.addEventListener('click', () => {
+      const open = sidebar.classList.toggle('mobile-open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? '关闭章节目录' : '打开章节目录');
+    });
+    document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('click', event => { if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) closeMenu(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && sidebar.classList.contains('mobile-open')) { closeMenu(); menuButton.focus(); } });
+    const sections = [...document.querySelectorAll('main > section[id]')];
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const progress = document.querySelector('.progress');
+    const toTop = document.querySelector('.to-top');
+    let scrollScheduled = false;
+    function updateScroll() {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${total > 0 ? Math.min(100, window.scrollY / total * 100) : 0}%`;
+      toTop.classList.toggle('visible', window.scrollY > 500);
+      let active = sections[0];
+      sections.forEach(section => { if (section.getBoundingClientRect().top <= 180) active = section; });
+      navLinks.forEach(link => {
+        const selected = link.getAttribute('href') === `#${active.id}`;
+        link.classList.toggle('active', selected);
+        if (selected) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+      });
+      scrollScheduled = false;
+    }
+    window.addEventListener('scroll', () => { if (!scrollScheduled) { scrollScheduled = true; requestAnimationFrame(updateScroll); } }, {passive: true});
+    window.addEventListener('resize', updateScroll);
+    toTop.addEventListener('click', () => { history.replaceState(null, '', location.pathname + location.search); window.scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'}); });
+    updateScroll();
+  </script>
+</body>
+</html>
+
